@@ -1,0 +1,15 @@
+= CSCI-4711 Parking Garage Ticketing System
+:toc:
+:toc-placement!:
+:toclevels: 2
+:sectnums:
+:author: Marcus Corulli, Daelyn Doughty, Bryce Spencer, Erkin Khoroshi Eisalou
+:revnumber: 1.0
+:icons: font
+
+toc::[]
+
+== Summary
+
+This is an assignement for our CSCI-4711 class. Our goal is to impliment a simple parking garage ticketing system.
+We use a SQLite database to store the user and spot data. 
