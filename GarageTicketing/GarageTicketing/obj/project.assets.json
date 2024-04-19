@@ -327,11 +327,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GoodsAuctionSystem\\GoodsAuctionSystem\\GoodsAuctionSystem.csproj",
-      "projectName": "GoodsAuctionSystem",
-      "projectPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GoodsAuctionSystem\\GoodsAuctionSystem\\GoodsAuctionSystem.csproj",
+      "projectUniqueName": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
+      "projectName": "GarageTicketing",
+      "projectPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
       "packagesPath": "C:\\Users\\marcu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GoodsAuctionSystem\\GoodsAuctionSystem\\obj\\",
+      "outputPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\marcu\\AppData\\Roaming\\NuGet\\NuGet.Config"
