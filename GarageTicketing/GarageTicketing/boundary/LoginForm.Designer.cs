@@ -1,5 +1,5 @@
 ﻿
-namespace GoodsAuctionSystem.Boundary
+namespace GarageTicketing.Boundary
 {
     partial class LoginForm
     {
@@ -44,17 +44,6 @@ namespace GoodsAuctionSystem.Boundary
             ((System.ComponentModel.ISupportInitialize)GASimg).BeginInit();
             SuspendLayout();
             // 
-            // GASimg
-            // 
-            GASimg.Image = (Image)resources.GetObject("GASimg.Image");
-            GASimg.Location = new Point(-26, -2);
-            GASimg.Margin = new Padding(3, 2, 3, 2);
-            GASimg.Name = "GASimg";
-            GASimg.Size = new Size(233, 109);
-            GASimg.SizeMode = PictureBoxSizeMode.Zoom;
-            GASimg.TabIndex = 0;
-            GASimg.TabStop = false;
-            // 
             // logo
             // 
             logo.Anchor = AnchorStyles.Top;
@@ -64,7 +53,7 @@ namespace GoodsAuctionSystem.Boundary
             logo.Name = "logo";
             logo.Size = new Size(309, 36);
             logo.TabIndex = 1;
-            logo.Text = "Goods Auction System ";
+            logo.Text = "Parking Garage Ticketing System";
             // 
             // contextMenuStrip1
             // 
@@ -152,7 +141,7 @@ namespace GoodsAuctionSystem.Boundary
             loginError.Name = "loginError";
             loginError.Size = new Size(535, 33);
             loginError.TabIndex = 9;
-            loginError.Text = "Username or password wrong, please try again!";
+            loginError.Text = "Username or password is wrong";
             loginError.Click += loginError_Click;
             // 
             // LoginForm

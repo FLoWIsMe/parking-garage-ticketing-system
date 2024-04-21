@@ -5,10 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using GoodsAuctionSystem.Entity;
-using GoodsAuctionSystem.Controller;
+using GarageTicketing.Entity;
+using GarageTicketing.Controller;
 
-namespace GoodsAuctionSystem.Boundary
+namespace GarageTicketing.Boundary
 {
     public partial class PlaceBidMenu : Form
     {

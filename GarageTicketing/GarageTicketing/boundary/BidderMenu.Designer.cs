@@ -1,5 +1,5 @@
 ﻿
-namespace GoodsAuctionSystem.Boundary
+namespace GarageTicketing.Boundary
 {
     partial class BidderMenu
     {

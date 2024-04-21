@@ -1,306 +1,155 @@
-namespace GoodsAuctionSystem.Entity
+namespace GarageTicketing.Entity
 {
     public class Account
     {
-        // Private Attributes
-        private string _usn;
-        private string _pass; 
-        private string _name; 
-        private int _role;
-        private int _accNum;
-
-        // constants for error checking
-        private const int maxAccNum = 2147483647; 
-        private const int minAccNum = 0; 
-
-        private const int maxRole = 10;
-        private const int minRole = 0; 
-
-        // Public attributes
-        public string username
-        {
-            get{ return _usn; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new NullReferenceException("Username cannot be null"); 
-                }
-                else
-                {
-                    _usn = value; 
-                }
-            }
-        }
-        
-        public string password
-        {
-            get{ return _pass; }
-            set
-            {
-                // Enforce password policy here
-                if (value == null)
-                {
-                    throw new NullReferenceException("Password cannot be null"); 
-                }
-                else
-                {
-                    _pass = value; 
-                }
-            }
-        }
-
-        public string name 
-        {
-            get{ return _name; }
-            set
-            { 
-                if (value == null)
-                {
-                    throw new NullReferenceException("Name cannot be null"); 
-                }
-                else
-                {
-                    _name = value;  
-                }
-            }
-        }
-
-        public int role
-        {
-            get{ return _role; }
-            set
-            {   
-                if (value < minRole || value > maxRole)
-                {
-                    throw new ArgumentException($"Role: {value} is out of range ({minRole}, {maxRole})"); 
-                }
-                else
-                {
-                    _role = value;
-                }
-            }
-        }
-
-        public int accountNumber
-        {
-            get{ return _accNum; }
-            set
-            {   
-
-                if (value > maxRole || value < minRole)
-                {
-                    throw new ArgumentException($"AccountNumber: {value} is out of range ({minAccNum}, {maxAccNum})"); 
-                }
-                else
-                {
-                    _accNum = value;
-                }
-            }
-        }
-
-        
-
-        // Empty constructor for Account
-        public Account() {}
-
-        // Populated constructor for Account
-        public Account(string aUserName, string aPassword, string aName, int aRole, int aAccountNumber)
-        {
-            username = aUserName;
-            password = aPassword;
-            name = aName; 
-            role = aRole;
-            accountNumber = aAccountNumber; 
-        }
-    }
-
-    public class Auction
-    {
-
-        // Private Attributes for Auction
+        private string _username;
+        private string _passwordHash;
         private string _name;
-        private string _desc; 
-        private int _auctionId; 
-        private float _hightestBid;
-        private int _owner; 
+        private int _type;
+        private int _id;
 
-        // Constants for error checking 
-        private const int maxID = 2147483647; 
-        private const int minID = 0; 
+        private const int MaxId = int.MaxValue;
+        private const int MinId = 0;
 
-        // Public Attributes for Auction
-        public bool condition { get; set; }
-        
-        public string name
+        public string PasswordHash
+        {
+            get { return _passwordHash; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new NullReferenceException("Password cannot be null");
+                }
+                _passwordHash = value;
+            }
+        }
+
+        public string Name
         {
             get { return _name; }
-            set 
+            set
             {
                 if (value == null)
                 {
-                    throw new NullReferenceException("Name cannot be null"); 
+                    throw new NullReferenceException("Name cannot be null");
                 }
-                else
-                {
-                    _name = value; 
-                }
+                _name = value;
             }
         }
 
-        public string description
+        public int Type
         {
-            get { return _desc; }
-            set 
+            get { return _type; }
+            set
             {
-                if (value == null)
+                if (value < MinId || value > MaxId)
                 {
-                    throw new NullReferenceException("Description cannot be null"); 
+                    throw new ArgumentException($"Role: {value} is out of range ({MinId}, {MaxId})");
                 }
-                else
-                {
-                    _desc = value; 
-                }
+                _type = value;
             }
         }
 
-        public int auctionId 
+        public int Id
         {
-            get { return _auctionId; }
-            set 
+            get { return _id; }
+            set
             {
-                if (value > maxID || value < minID)
+                if (value < MinId || value > MaxId)
                 {
-                    throw new ArgumentException($"AuctionID: {value} is out of range ({minID}, {maxID})");
+                    throw new ArgumentException($"AccountNumber: {value} is out of range ({MinId}, {MaxId})");
                 }
-                else
-                {
-                    _auctionId = value; 
-                }
+                _id = value;
             }
         }
 
-        public float hightestBid
-        {
-            get { return _hightestBid; }
-            set 
-            {
-                if (value <= 0)
-                {
-                    throw new NullReferenceException("Highest Bid cannot be 0 or negative."); 
-                }
-                else if (value > _hightestBid)
-                {
-                    _hightestBid = value; 
-                }
-                else 
-                {
-                    throw new ArgumentException($"Highest Bid: {value} is not greater than highest bid: {hightestBid}."); 
-                }
-            }
-        }
-        
-        public int owner
-        {
-            get { return _owner; }
-            set 
-            {
-                if (value == null)
-                {
-                    throw new NullReferenceException("Owner cannot be null"); 
-                }
-                else
-                {
-                    _owner = value; 
-                }
-            }
-        }
+        public Account() { }
 
-        // Empty constructor for Auction
-        public Auction() {}
-
-        // Populated constructor for Auction
-        public Auction (string aName, string aDescription, bool aCondition, int aAuctionId, float aHighestBid, int OwnerAccountID)
+        public Account(string username, string password, string name, int type, int id)
         {
-            name = aName;
-            description = aDescription; 
-            condition = aCondition; 
-            auctionId = aAuctionId; 
-            hightestBid = aHighestBid; 
-            owner = OwnerAccountID;
-        } 
+            Username = username;
+            PasswordHash = password;
+            Name = name;
+            Type = type;
+            Id = id;
+        }
     }
-    
-    public class Bid
+
+    public class Spot
     {
-        
-        //bid privates
-        private int _bidId;
-        private float _bidAmount;
-        private int _bidder;
+        private int _userID;
+        private string _time;
+        private int _index;
 
-        //constants
-        private const int maxID = 2147483647;
-        private const int minID = 0;
+        private const int MaxId = int.MaxValue;
+        private const int MinId = 0;
 
-        //publics
-        public int bidId
+        public bool Condition { get; set; }
+
+        public int UserID
         {
-            get { return _bidId; }
+            get { return _userID; }
             set
             {
-                if (value > maxID || value < minID)
+                if (value == null)
                 {
-                    throw new ArgumentException($"BidID: {value} is out of range ({minID}, {maxID})");
+                    throw new NullReferenceException("User cannot be null");
                 }
-                else
-                {
-                    _bidId = value;
-                }
+                _userID = value;
             }
         }
 
-        public float bidAmount
+        public string Time
         {
-            get { return _bidAmount; }
+            get { return _time; }
             set
             {
-                if (value < 0)
-                { 
-                    throw new ArgumentException($"BidAmount: {value} must be greater than 0");
-                }
-                else
+                if (value == null)
                 {
-                    _bidAmount = value;
+                    throw new NullReferenceException("Time cannot be null");
                 }
+                _time = value;
             }
         }
 
-        public int bidder
+        public int Index
         {
-            get { return _bidder; }
-            set 
+            get { return _index; }
+            set
             {
-                if (value < 0)
+                if (value < MinId || value > MaxId)
                 {
-                    throw new ArgumentOutOfRangeException("Bidder cannot be negative."); 
+                    throw new ArgumentException($"Spot Index: {value} is out of range ({MinId}, {MaxId})");
                 }
-                else
-                {
-                    _bidder = value;
-                }
+                _index = value;
             }
         }
 
-        //empty constructor
-        public Bid() {}
+        public Spot() { }
 
-        //populated constructor
-        public Bid(int aBidId, float aBidAmount, int aBidder)
+        public Spot(string time, Account user, int index)
         {
-            bidId = aBidId;
-            bidAmount = aBidAmount;
-            bidder = aBidder;
+            Time = time;
+            User = user;
+            Index = index;
+        }
+    }
+
+    public class Spots
+    {
+        private Spot[] _spots;
+
+        public Spot[] Spots
+        {
+            get { return _spots; }
+            set { _spots = value; }
+        }
+
+        public Spots() { }
+
+        public Spots(Spot[] spots)
+        {
+            Spots = spots;
         }
     }
 }

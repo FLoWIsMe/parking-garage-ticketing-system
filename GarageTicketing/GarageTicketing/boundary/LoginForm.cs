@@ -1,5 +1,5 @@
-﻿using GoodsAuctionSystem.Controller;
-using GoodsAuctionSystem.Entity;
+﻿using GarageTicketing.Controller;
+using GarageTicketing.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace GoodsAuctionSystem.Boundary
+namespace GarageTicketing.Boundary
 {
     public partial class LoginForm : Form
     {
