@@ -159,6 +159,13 @@ namespace GarageTicketing.Entity
             User = user;
             Index = index;
         }
+
+        public Spot(string time, int userID, int index){
+            Time = time;
+            UserID = userID;
+            Index = index;
+        }
+
     }
 
     public class Spots
