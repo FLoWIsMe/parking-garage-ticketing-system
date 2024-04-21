@@ -1,7 +1,7 @@
 ﻿
 namespace GarageTicketing.Boundary
 {
-    partial class CreateAuctionMenu
+    partial class EditClaimMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GarageTicketing.Boundary
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAuctionMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditClaimMenu));
             label2 = new Label();
             biddingPageTitle = new Label();
             GASimg = new PictureBox();
@@ -195,7 +195,7 @@ namespace GarageTicketing.Boundary
             conditionDrop.TabIndex = 31;
             conditionDrop.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // CreateAuctionMenu
+            // EditClaimMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -217,7 +217,7 @@ namespace GarageTicketing.Boundary
             Controls.Add(GASimg);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "CreateAuctionMenu";
+            Name = "EditClaimMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Auction Menu";
             ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();

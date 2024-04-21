@@ -10,15 +10,15 @@ using GarageTicketing.Entity;
 
 namespace GarageTicketing.Boundary
 {
-    public partial class AuctioneerMenu : Form
+    public partial class AdminMenu : Form
     {
         private bool _programmaticClose;
         private int accountID;
-        public AuctioneerMenu(int anAccountID)
+        public AdminMenu(int anAccountID)
         {
             InitializeComponent();
 
-            this.FormClosing += AuctioneerMenu_Closing;
+            this.FormClosing += AdminMenu_Closing;
             accountID = anAccountID;
         }
 
@@ -33,7 +33,7 @@ namespace GarageTicketing.Boundary
                 itemValueLabels[i].Text = anAuctionList[i].hightestBid.ToString();
             }
         }
-        private void AuctioneerMenu_Closing(object sender, FormClosingEventArgs e)
+        private void AdminMenu_Closing(object sender, FormClosingEventArgs e)
         {
             // Needed for clean exit
             if (_programmaticClose == true)

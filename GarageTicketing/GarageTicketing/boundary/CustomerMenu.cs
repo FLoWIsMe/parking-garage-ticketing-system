@@ -10,15 +10,15 @@ using GarageTicketing.Entity;
 
 namespace GarageTicketing.Boundary
 {
-    public partial class BidderMenu : Form
+    public partial class CustomerMenu : Form
     {
         private bool _programmaticClose;
         private int accountID;
         private static List<Auction> auctionList;
-        public BidderMenu(int anAccountID, List<Auction> anAuctionList)
+        public CustomerMenu(int anAccountID, List<Auction> anAuctionList)
         {
             InitializeComponent();
-            this.FormClosing += BidderMenu_Closing;
+            this.FormClosing += CustomerMenu_Closing;
             accountID = anAccountID;
             auctionList = anAuctionList;
             formatAuctions();
@@ -36,14 +36,14 @@ namespace GarageTicketing.Boundary
             }
         }
 
-        private void BidderMenu_Closing(object? sender, FormClosingEventArgs e)
+        private void CustomerMenu_Closing(object? sender, FormClosingEventArgs e)
         {
             if (_programmaticClose == true)
             {
                 // Do Nothing
                 _programmaticClose = false;
             }
-            else if (e.CloseReason == CloseReason.UserClosing)
+            else if (e.CloseReason == CloseReason.CustomerClosing)
             {
                 DBConnector.RecordLogout(accountID);
                 Application.Exit();

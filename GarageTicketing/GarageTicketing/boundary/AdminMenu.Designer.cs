@@ -1,7 +1,7 @@
 ﻿
 namespace GarageTicketing.Boundary
 {
-    partial class AuctioneerMenu
+    partial class AdminMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GarageTicketing.Boundary
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuctioneerMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenu));
             label2 = new Label();
             GASimg = new PictureBox();
             label3 = new Label();
@@ -536,7 +536,7 @@ namespace GarageTicketing.Boundary
             label32.TabIndex = 0;
             label32.Text = "Item:";
             // 
-            // AuctioneerMenu
+            // AdminMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -556,9 +556,9 @@ namespace GarageTicketing.Boundary
             Controls.Add(GASimg);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "AuctioneerMenu";
+            Name = "AdminMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Auctioneer Menu";
+            Text = "Admin Menu";
             ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
