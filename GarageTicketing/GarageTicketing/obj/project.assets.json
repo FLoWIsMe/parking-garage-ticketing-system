@@ -322,19 +322,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marcu\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
       "projectName": "GarageTicketing",
-      "projectPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
-      "packagesPath": "C:\\Users\\marcu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marcu\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marcu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"

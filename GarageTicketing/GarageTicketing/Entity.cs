@@ -4,7 +4,6 @@ namespace GarageTicketing.Entity
     {
         private string _username;
         private string _passwordHash;
-        private string _name;
         private int _type;
         private int _id;
 
@@ -24,16 +23,16 @@ namespace GarageTicketing.Entity
             }
         }
 
-        public string Name
+        public string Username
         {
-            get { return _name; }
+            get { return _username; }
             set
             {
                 if (value == null)
                 {
                     throw new NullReferenceException("Name cannot be null");
                 }
-                _name = value;
+                _username = value;
             }
         }
 
@@ -65,11 +64,10 @@ namespace GarageTicketing.Entity
 
         public Account() { }
 
-        public Account(string username, string password, string name, int type, int id)
+        public Account(string username, string password, int type, int id)
         {
             Username = username;
             PasswordHash = password;
-            Name = name;
             Type = type;
             Id = id;
         }
@@ -127,7 +125,7 @@ namespace GarageTicketing.Entity
 
         public Spot() { }
 
-        public Spot(string time, Account user, int index)
+        public Spot(string time, int user, int index)
         {
             Time = time;
             User = user;

@@ -144,8 +144,8 @@ namespace GarageTicketing.Controller {
 			conn.Close();
 			Account account = new Account(
 				AccType,
-				AccName,
 				AccPass,
+				AccName,
 				AccId
 			);
 			return account;
@@ -179,7 +179,7 @@ namespace GarageTicketing.Controller {
 			Spot spot = new Spot(
 				SpotTime,
 				SpotUser,
-				SpotIndex,
+				SpotIndex
             );
 			return spot;
 		}
