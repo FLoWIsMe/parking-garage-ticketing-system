@@ -4,7 +4,7 @@ namespace GarageTicketing.Entity
     {
         private string _username;
         private string _passwordHash;
-        private int _type;
+        private string _type;
         private int _id;
 
         private const int MaxId = int.MaxValue;
@@ -36,14 +36,14 @@ namespace GarageTicketing.Entity
             }
         }
 
-        public int Type
+        public string Type
         {
             get { return _type; }
             set
             {
-                if (value < MinId || value > MaxId)
+                if (value == null)
                 {
-                    throw new ArgumentException($"Role: {value} is out of range ({MinId}, {MaxId})");
+                    throw new NullReferenceException("Name cannot be null");
                 }
                 _type = value;
             }
@@ -128,7 +128,7 @@ namespace GarageTicketing.Entity
         public Spot(string time, int user, int index)
         {
             Time = time;
-            User = user;
+            UserID = user;
             Index = index;
         }
     }
