@@ -1,7 +1,7 @@
 ﻿
 namespace GarageTicketing.Boundary
 {
-    partial class PlaceBidMenu
+    partial class ClaimSpotMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GarageTicketing.Boundary
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlaceBidMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClaimSpotMenu));
             label2 = new Label();
             biddingPageTitle = new Label();
             GASimg = new PictureBox();
@@ -44,7 +44,7 @@ namespace GarageTicketing.Boundary
             highestBidLabel = new Label();
             itemNameLabel = new Label();
             panel2 = new Panel();
-            placeBidButton = new Button();
+            ClaimSpotButton = new Button();
             numericUpDown1 = new NumericUpDown();
             dollarLOL = new Label();
             bidNowLabel = new Label();
@@ -195,7 +195,7 @@ namespace GarageTicketing.Boundary
             // 
             panel2.BackColor = SystemColors.ControlLightLight;
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(placeBidButton);
+            panel2.Controls.Add(ClaimSpotButton);
             panel2.Controls.Add(numericUpDown1);
             panel2.Controls.Add(dollarLOL);
             panel2.Controls.Add(bidNowLabel);
@@ -204,17 +204,17 @@ namespace GarageTicketing.Boundary
             panel2.Size = new Size(287, 150);
             panel2.TabIndex = 19;
             // 
-            // placeBidButton
+            // ClaimSpotButton
             // 
-            placeBidButton.BackColor = SystemColors.Control;
-            placeBidButton.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            placeBidButton.Location = new Point(153, 72);
-            placeBidButton.Name = "placeBidButton";
-            placeBidButton.Size = new Size(112, 34);
-            placeBidButton.TabIndex = 6;
-            placeBidButton.Text = "PlaceBid";
-            placeBidButton.UseVisualStyleBackColor = false;
-            placeBidButton.Click += placeBidButton_Click;
+            ClaimSpotButton.BackColor = SystemColors.Control;
+            ClaimSpotButton.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            ClaimSpotButton.Location = new Point(153, 72);
+            ClaimSpotButton.Name = "ClaimSpotButton";
+            ClaimSpotButton.Size = new Size(112, 34);
+            ClaimSpotButton.TabIndex = 6;
+            ClaimSpotButton.Text = "ClaimSpot";
+            ClaimSpotButton.UseVisualStyleBackColor = false;
+            ClaimSpotButton.Click += ClaimSpotButton_Click;
             // 
             // numericUpDown1
             // 
@@ -246,7 +246,7 @@ namespace GarageTicketing.Boundary
             bidNowLabel.TabIndex = 3;
             bidNowLabel.Text = "Bid Now";
             // 
-            // PlaceBidMenu
+            // ClaimSpotMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -261,7 +261,7 @@ namespace GarageTicketing.Boundary
             Controls.Add(GASimg);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "PlaceBidMenu";
+            Name = "ClaimSpotMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Place Bid Menu";
             ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
@@ -289,7 +289,7 @@ namespace GarageTicketing.Boundary
         private System.Windows.Forms.Label highestBidLabel;
         private System.Windows.Forms.Label itemNameLabel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button placeBidButton;
+        private System.Windows.Forms.Button ClaimSpotButton;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label dollarLOL;
         private System.Windows.Forms.Label bidNowLabel;

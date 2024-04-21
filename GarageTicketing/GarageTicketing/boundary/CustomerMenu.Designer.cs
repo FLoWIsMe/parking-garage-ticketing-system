@@ -1,7 +1,7 @@
 ﻿
 namespace GarageTicketing.Boundary
 {
-    partial class BidderMenu
+    partial class CustomerMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GarageTicketing.Boundary
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BidderMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerMenu));
             label2 = new Label();
             logo = new Label();
             GASimg = new PictureBox();
@@ -540,7 +540,7 @@ namespace GarageTicketing.Boundary
             label3.Size = new Size(996, 16);
             label3.TabIndex = 21;
             // 
-            // BidderMenu
+            // CustomerMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -555,9 +555,9 @@ namespace GarageTicketing.Boundary
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "BidderMenu";
+            Name = "CustomerMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Bidder Menu";
+            Text = "Customer Menu";
             ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
             panel1.ResumeLayout(false);
             panel7.ResumeLayout(false);

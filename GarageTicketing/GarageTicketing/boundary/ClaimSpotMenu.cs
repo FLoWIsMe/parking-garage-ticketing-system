@@ -10,17 +10,17 @@ using GarageTicketing.Controller;
 
 namespace GarageTicketing.Boundary
 {
-    public partial class PlaceBidMenu : Form
+    public partial class ClaimSpotMenu : Form
     {
         private bool _programmaticClose;
         private int accountID;
         private Auction anAuction;
-        public PlaceBidMenu(Auction someAuction, int anAccountID)
+        public ClaimSpotMenu(Auction someAuction, int anAccountID)
         {
             InitializeComponent();
             numericUpDown1.Maximum = 1000000;
             this.anAuction = someAuction;
-            this.FormClosing += PlaceBidMenu_FormClosing;
+            this.FormClosing += ClaimSpotMenu_FormClosing;
 
             this.descripLabel.Text = anAuction.description;
 
@@ -41,7 +41,7 @@ namespace GarageTicketing.Boundary
 
         }
 
-        private void PlaceBidMenu_FormClosing(object? sender, FormClosingEventArgs e)
+        private void ClaimSpotMenu_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (_programmaticClose == true)
             {
@@ -59,7 +59,7 @@ namespace GarageTicketing.Boundary
 
         }
 
-        private void placeBidButton_Click(object sender, EventArgs e)
+        private void ClaimSpotButton_Click(object sender, EventArgs e)
         {
             float newHighestBid = (float)numericUpDown1.Value;
             BidController.submit(accountID, anAuction.auctionId, newHighestBid);

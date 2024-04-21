@@ -10,20 +10,20 @@ using GarageTicketing.Controller;
 
 namespace GarageTicketing.Boundary
 {
-    public partial class CreateAuctionMenu : Form
+    public partial class EditClaimMenu : Form
     {
         private int accountID;
         private bool _programaticClose;
-        public CreateAuctionMenu(int anAccountID)
+        public EditClaimMenu(int anAccountID)
         {
             InitializeComponent();
             accountID = anAccountID;
-            this.FormClosing += CreateAuctionMenu_FormClosing;
+            this.FormClosing += EditClaimMenu_FormClosing;
             conditionDrop.Text = "New";
             startingPrice.Maximum = 1000000;
         }
 
-        private void CreateAuctionMenu_FormClosing(object? sender, FormClosingEventArgs e)
+        private void EditClaimMenu_FormClosing(object? sender, FormClosingEventArgs e)
         {
             if (_programaticClose == true)
             {
