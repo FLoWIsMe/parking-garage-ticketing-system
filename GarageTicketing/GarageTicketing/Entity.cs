@@ -11,6 +11,18 @@ namespace GarageTicketing.Entity
         private const int MaxId = int.MaxValue;
         private const int MinId = 0;
 
+        public string Username
+        {
+            get { return _username; } 
+            set
+            { 
+                if (value == null)
+                {
+                    throw new NullReferenceException("Username cannot be null");
+                }
+                _username = value;
+            }
+        }
         public string PasswordHash
         {
             get { return _passwordHash; }
@@ -80,20 +92,34 @@ namespace GarageTicketing.Entity
         private int _userID;
         private string _time;
         private int _index;
-
+        private Account _user;
         private const int MaxId = int.MaxValue;
         private const int MinId = 0;
 
         public bool Condition { get; set; }
 
+        public Account User
+        {
+            get{return _user;}
+            set{
+                if (value == null)
+                {
+                    throw new ArgumentNullException("User cannot be null");
+                }
+                else
+                {
+                    _user = value;
+                }
+            }
+        }
         public int UserID
         {
             get { return _userID; }
             set
             {
-                if (value == null)
+                if (value < 0)
                 {
-                    throw new NullReferenceException("User cannot be null");
+                    throw new NullReferenceException("UserID cannot be negative");
                 }
                 _userID = value;
             }
@@ -137,19 +163,19 @@ namespace GarageTicketing.Entity
 
     public class Spots
     {
-        private Spot[] _spots;
+        private Spot[] _spotsArray;
 
-        public Spot[] Spots
+        public Spot[] SpotsArray
         {
-            get { return _spots; }
-            set { _spots = value; }
+            get { return _spotsArray; }
+            set { _spotsArray = value; }
         }
 
         public Spots() { }
 
         public Spots(Spot[] spots)
         {
-            Spots = spots;
+            SpotsArray = spots;
         }
     }
 }
