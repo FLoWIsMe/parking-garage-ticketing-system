@@ -321,7 +321,7 @@ namespace GarageTicketing.Controller {
 			// Get the Spot from the database
 			Spot anSpot = DBConnector.GetSpot(SpotID);
 
-			// Create the PlaceBidMenu and display it
+			// Add our code
 			PlaceBidMenu aPlaceBidmenu = new PlaceBidMenu(anSpot, accountID);
 			aPlaceBidmenu.Show();
 		}
@@ -369,8 +369,8 @@ namespace GarageTicketing.Controller {
 				if (isAuth) 
 				{
 					// Figure 2.10
-					DBConnector.SaveLogin(anAccount.accountNumber);
-					List<Spot> myList = DBConnector.ListSpot();
+					DBConnector.SaveLogin(anAccount.Id);
+					List<Spot> myList = DBConnector.ListSpots();
 					
 					// 0 is Spoteer
 					if (anAccount.role == 0)
