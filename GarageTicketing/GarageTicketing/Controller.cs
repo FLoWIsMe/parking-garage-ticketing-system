@@ -179,7 +179,7 @@ namespace GarageTicketing.Controller {
 			Spot spot = new Spot(
 				SpotTime,
 				SpotUser,
-				SpotIndex,
+				SpotIndex
             );
 			return spot;
 		}

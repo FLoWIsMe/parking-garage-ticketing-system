@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\boundary\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\boundary\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\garageticketing.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\garageticketing.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\sql_tests.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\sql_tests.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|c:\\users\\daelyn\\desktop\\software engineering\\final\\csci-4711-parking-garage-ticketing-system\\garageticketing\\garageticketing\\sql_tests.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{53271D15-498E-49EA-9EDD-12A3C1E7040A}|GarageTicketing\\GarageTicketing.csproj|solutionrelative:garageticketing\\sql_tests.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\Entity.cs",
+              "RelativeDocumentMoniker": "GarageTicketing\\Entity.cs",
+              "ToolTip": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\Entity.cs",
+              "RelativeToolTip": "GarageTicketing\\Entity.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAUwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T23:38:46.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Controller.cs",
+              "DocumentMoniker": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\Controller.cs",
+              "RelativeDocumentMoniker": "GarageTicketing\\Controller.cs",
+              "ToolTip": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\Controller.cs",
+              "RelativeToolTip": "GarageTicketing\\Controller.cs",
+              "ViewState": "AQIAAJkAAAAAAAAAAAAiwLUAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T23:38:32.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\boundary\\LoginForm.cs",
+              "RelativeDocumentMoniker": "GarageTicketing\\boundary\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\boundary\\LoginForm.cs",
+              "RelativeToolTip": "GarageTicketing\\boundary\\LoginForm.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T23:38:07.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GarageTicketing.db",
+              "DocumentMoniker": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.db",
+              "RelativeDocumentMoniker": "GarageTicketing\\GarageTicketing.db",
+              "ToolTip": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.db",
+              "RelativeToolTip": "GarageTicketing\\GarageTicketing.db",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGGSURBVDhPY2SAgsry0vsMDP8VoFwsgPHBn38Mgd3d3RegAkDl//9DWSADSv7/\u002BvULJwbJNzXUvi8tLTWAagEDJihNFEhITBbg5ebYj2wI0QYICAgwTJ82heH79\u002B8CLEz/90OFEQDdC3uOnPm/69ApFDEYBqmFasN0wdXbDxh2HDzJ8O79B4a3794zrN9\u002BgOHc5RtQWUyAYQALExPDt2/fGUz0NBlMDbQYvn3/xsDCgtunGDJ//v5l\u002BP37F8Pff38Z/gHZf37/Zvjz5y9UFhNgGPDz508GUOI4cPQUw74jJxgYgZxTZ88DXfIDogANYBhgpKvBEObnxsDHw8XwF2jzsxdPGR49eczQ0TeR4cbN21BVCIDTc4FeLgyezjYMHz98ZGirKWf48O4dAwcHG1QWAXCHDhB8/QoMQKCK3KJSBlZWZpSUCwN4DVBXVWaoKMpnsLG0YOjtaGNQVMDMKngNAAFuLi6G8NBgKA8TEDSAEEDKzsXA7MyIJzsjg/8P2jt7FRkYGBgAmdPDqvBXzR4AAAAASUVORK5CYII=",
+              "WhenOpened": "2024-04-21T23:37:43.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SQL_tests.sql ",
+              "DocumentMoniker": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\SQL_tests.sql",
+              "RelativeDocumentMoniker": "GarageTicketing\\SQL_tests.sql",
+              "ToolTip": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\SQL_tests.sql",
+              "RelativeToolTip": "GarageTicketing\\SQL_tests.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-04-21T23:37:33.853Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
