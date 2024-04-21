@@ -213,7 +213,7 @@ namespace GarageTicketing.Controller {
 				Spot spot = new Spot(
 					SpotTime,
 					SpotUser,
-					SpotIndex,
+					SpotIndex
                 );
 				SpotList.Add(spot);
 			}
@@ -369,8 +369,8 @@ namespace GarageTicketing.Controller {
 				if (isAuth) 
 				{
 					// Figure 2.10
-					DBConnector.SaveLogin(anAccount.accountNumber);
-					List<Spot> myList = DBConnector.ListSpot();
+					DBConnector.SaveLogin(anAccount.Id);
+					List<Spot> myList = DBConnector.ListSpots();
 					
 					// 0 is Spoteer
 					if (anAccount.role == 0)

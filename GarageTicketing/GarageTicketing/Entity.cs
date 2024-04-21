@@ -76,7 +76,7 @@ namespace GarageTicketing.Entity
     public class Spot
     {
         private int _userID;
-        private string _time;
+        private int _time;
         private int _index;
 
         private const int MaxId = int.MaxValue;
@@ -97,14 +97,14 @@ namespace GarageTicketing.Entity
             }
         }
 
-        public string Time
+        public int Time
         {
             get { return _time; }
             set
             {
-                if (value == null)
+                if (value < MinId || value > MaxId)
                 {
-                    throw new NullReferenceException("Time cannot be null");
+                    throw new ArgumentException($"Spot Index: {value} is out of range ({MinId}, {MaxId})");
                 }
                 _time = value;
             }
@@ -125,7 +125,7 @@ namespace GarageTicketing.Entity
 
         public Spot() { }
 
-        public Spot(string time, int user, int index)
+        public Spot(int time, int user, int index)
         {
             Time = time;
             UserID = user;
@@ -137,7 +137,7 @@ namespace GarageTicketing.Entity
     {
         private Spot[] _spots;
 
-        public Spot[] Spots
+        public Spot[] SpotList
         {
             get { return _spots; }
             set { _spots = value; }
@@ -147,7 +147,7 @@ namespace GarageTicketing.Entity
 
         public Spots(Spot[] spots)
         {
-            Spots = spots;
+            SpotList = spots;
         }
     }
 }
