@@ -12,4 +12,22 @@ toc::[]
 == Summary
 
 This is an assignement for our CSCI-4711 class. Our goal is to impliment a simple parking garage ticketing system.
-We use a SQLite database to store the user and spot data. 
+We use a SQLite database to store the user and spot data.
+
+== Instructions
+
+Download a .NET SDK:
+https://aka.ms/dotnet-download
+
+Open a terminal or command prompt.
+Navigate to the directory where your .NET application is located.
+Run the following command to build the application:
+
+  dotnet build
+
+This command will compile your code and generate the necessary output files.
+Once the build is successful, you can run the application by executing the following command:
+
+  dotnet run
+
+This command will build the application if necessary and then run it.
