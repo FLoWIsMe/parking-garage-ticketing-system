@@ -143,9 +143,10 @@ namespace GarageTicketing.Controller {
 			}
 			conn.Close();
 			Account account = new Account(
-				AccType,
+				username,
+				password,
 				AccName,
-				AccPass,
+				AccType,
 				AccId
 			);
 			return account;
