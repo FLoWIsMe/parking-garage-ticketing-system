@@ -22,15 +22,15 @@ namespace GarageTicketing.Boundary
             accountID = anAccountID;
         }
 
-        public void formatAuctions(List<Auction> anAuctionList)
+        public void formatSpots(List<Spot> anSpotList)
         {
             Label[] itemNameLabels = new Label[] { itemName1, itemName2, itemName3, itemName4, itemName5, itemName6 };
             Label[] itemValueLabels = new Label[] { itemVal1, itemVal2, itemVal3, itemVal4, itemVal5, itemVal6 };
 
-            for (int i = 0; i < anAuctionList.Count; i++)
+            for (int i = 0; i < anSpotList.Count; i++)
             {
-                itemNameLabels[i].Text = anAuctionList[i].name;
-                itemValueLabels[i].Text = anAuctionList[i].hightestBid.ToString();
+                itemNameLabels[i].Text = anSpotList[i].name;
+                itemValueLabels[i].Text = anSpotList[i].hightestBid.ToString();
             }
         }
         private void AdminMenu_Closing(object sender, FormClosingEventArgs e)
@@ -74,7 +74,7 @@ namespace GarageTicketing.Boundary
         {
             _programmaticClose = true;
             this.Close(); 
-            AuctionControl.auctionMenu(accountID); 
+            SpotControl.SpotMenu(accountID); 
         }
     }
 }

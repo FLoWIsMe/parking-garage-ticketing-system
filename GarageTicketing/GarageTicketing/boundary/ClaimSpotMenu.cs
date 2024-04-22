@@ -14,17 +14,17 @@ namespace GarageTicketing.Boundary
     {
         private bool _programmaticClose;
         private int accountID;
-        private Auction anAuction;
-        public ClaimSpotMenu(Auction someAuction, int anAccountID)
+        private Spot anSpot;
+        public ClaimSpotMenu(Spot someSpot, int anAccountID)
         {
             InitializeComponent();
             numericUpDown1.Maximum = 1000000;
-            this.anAuction = someAuction;
+            this.anSpot = someSpot;
             this.FormClosing += ClaimSpotMenu_FormClosing;
 
-            this.descripLabel.Text = anAuction.description;
+            this.descripLabel.Text = anSpot.description;
 
-            if (anAuction.condition == true)
+            if (anSpot.condition == true)
             {
                 this.condNewUsedLabel.Text = "Used";
             }
@@ -33,9 +33,9 @@ namespace GarageTicketing.Boundary
                 this.condNewUsedLabel.Text = "New";
             }
 
-            this.highBidValLabel.Text = anAuction.hightestBid.ToString();
-            this.itemNameLabel.Text = anAuction.name;
-            this.numericUpDown1.Minimum = (decimal)anAuction.hightestBid + 1;
+            this.highBidValLabel.Text = anSpot.hightestBid.ToString();
+            this.itemNameLabel.Text = anSpot.name;
+            this.numericUpDown1.Minimum = (decimal)anSpot.hightestBid + 1;
             this.accountID = anAccountID;
             this.numericUpDown1.Maximum = 1000000;
 
@@ -62,7 +62,7 @@ namespace GarageTicketing.Boundary
         private void ClaimSpotButton_Click(object sender, EventArgs e)
         {
             float newHighestBid = (float)numericUpDown1.Value;
-            BidController.submit(accountID, anAuction.auctionId, newHighestBid);
+            BidController.submit(accountID, anSpot.SpotId, newHighestBid);
             _programmaticClose = true;
             this.Close(); 
         }

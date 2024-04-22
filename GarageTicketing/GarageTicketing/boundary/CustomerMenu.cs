@@ -14,25 +14,25 @@ namespace GarageTicketing.Boundary
     {
         private bool _programmaticClose;
         private int accountID;
-        private static List<Auction> auctionList;
-        public CustomerMenu(int anAccountID, List<Auction> anAuctionList)
+        private static List<Spot> SpotList;
+        public CustomerMenu(int anAccountID, List<Spot> anSpotList)
         {
             InitializeComponent();
             this.FormClosing += CustomerMenu_Closing;
             accountID = anAccountID;
-            auctionList = anAuctionList;
-            formatAuctions();
+            SpotList = anSpotList;
+            formatSpots();
 
         }
-        private void formatAuctions()
+        private void formatSpots()
         {
             Label[] itemNameLabels = new Label[] { itemName1, itemName2, itemName3, itemName4, itemName5, itemName6 };
             Label[] itemValueLabels = new Label[] { itemVal1, itemVal2, itemVal3, itemVal4, itemVal5, itemVal6 };
 
-            for (int i = 0; i < auctionList.Count; i++)
+            for (int i = 0; i < SpotList.Count; i++)
             {
-                itemNameLabels[i].Text = auctionList[i].name;
-                itemValueLabels[i].Text = auctionList[i].hightestBid.ToString();
+                itemNameLabels[i].Text = SpotList[i].name;
+                itemValueLabels[i].Text = SpotList[i].hightestBid.ToString();
             }
         }
 
@@ -64,42 +64,42 @@ namespace GarageTicketing.Boundary
 
         private void bidButton1_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[0].auctionId, accountID);
+            BidController.select(SpotList[0].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }
 
         private void bidButton2_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[1].auctionId, accountID);
+            BidController.select(SpotList[1].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }
 
         private void bidButton3_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[2].auctionId, accountID);
+            BidController.select(SpotList[2].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }
 
         private void bidButton4_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[3].auctionId, accountID);
+            BidController.select(SpotList[3].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }
 
         private void bidButton5_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[4].auctionId, accountID);
+            BidController.select(SpotList[4].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }
 
         private void bidButton6_Click(object sender, EventArgs e)
         {
-            BidController.select(auctionList[5].auctionId, accountID);
+            BidController.select(SpotList[5].SpotId, accountID);
             _programmaticClose = true;
             this.Close();
         }

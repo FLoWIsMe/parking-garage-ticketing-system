@@ -103,7 +103,7 @@ namespace GarageTicketing.Boundary
             logo.Name = "logo";
             logo.Size = new Size(211, 27);
             logo.TabIndex = 11;
-            logo.Text = "In Progress Auctions";
+            logo.Text = "In Progress Spots";
             // 
             // GASimg
             // 
