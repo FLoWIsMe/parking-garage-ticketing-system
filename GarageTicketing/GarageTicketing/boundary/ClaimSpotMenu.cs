@@ -15,29 +15,16 @@ namespace GarageTicketing.Boundary
         private bool _programmaticClose;
         private int accountID;
         private Spot anSpot;
+
         public ClaimSpotMenu(Spot someSpot, int anAccountID)
         {
             InitializeComponent();
-            numericUpDown1.Maximum = 1000000;
             this.anSpot = someSpot;
             this.FormClosing += ClaimSpotMenu_FormClosing;
 
-            this.descripLabel.Text = anSpot.description;
-
-            if (anSpot.condition == true)
-            {
-                this.condNewUsedLabel.Text = "Used";
-            }
-            else
-            {
-                this.condNewUsedLabel.Text = "New";
-            }
-
-            this.highBidValLabel.Text = anSpot.hightestBid.ToString();
-            this.itemNameLabel.Text = anSpot.name;
-            this.numericUpDown1.Minimum = (decimal)anSpot.hightestBid + 1;
-            this.accountID = anAccountID;
-            this.numericUpDown1.Maximum = 1000000;
+            this.userLabel.Text = anSpot.User;
+            this.timeLabel.Text = anSpot.Time.ToString();
+            this.indexLabel.Text = anSpot.Index;
 
         }
 
@@ -56,13 +43,12 @@ namespace GarageTicketing.Boundary
 
         private void logo_Click(object sender, EventArgs e)
         {
-
+            // Add functionality here if needed
         }
 
         private void ClaimSpotButton_Click(object sender, EventArgs e)
         {
-            float newHighestBid = (float)numericUpDown1.Value;
-            BidController.submit(accountID, anSpot.SpotId, newHighestBid);
+            SpotControl.submit(accountID, anSpot.Time, anSpot.Index);
             _programmaticClose = true;
             this.Close(); 
         }

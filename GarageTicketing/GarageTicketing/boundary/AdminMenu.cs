@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GarageTicketing.Controller;
 using GarageTicketing.Entity;
+using GarageTicketing.Controller;
 
 namespace GarageTicketing.Boundary
 {
@@ -14,67 +15,45 @@ namespace GarageTicketing.Boundary
     {
         private bool _programmaticClose;
         private int accountID;
-        public AdminMenu(int anAccountID)
+        private List<Spot> anSpots;
+
+        public AdminMenu(List<Spot> someSpots, int anAccountID)
         {
             InitializeComponent();
+            this.anSpots = someSpots;
+            this.accountID = anAccountID;
+            this.FormClosing += ClaimSpotMenu_FormClosing;
 
-            this.FormClosing += AdminMenu_Closing;
-            accountID = anAccountID;
-        }
-
-        public void formatSpots(List<Spot> anSpotList)
-        {
-            Label[] itemNameLabels = new Label[] { itemName1, itemName2, itemName3, itemName4, itemName5, itemName6 };
-            Label[] itemValueLabels = new Label[] { itemVal1, itemVal2, itemVal3, itemVal4, itemVal5, itemVal6 };
-
-            for (int i = 0; i < anSpotList.Count; i++)
+            // Hook up the click event for each button
+            foreach(var spot in anSpots)
             {
-                itemNameLabels[i].Text = anSpotList[i].name;
-                itemValueLabels[i].Text = anSpotList[i].hightestBid.ToString();
+                var button = new Button();
+                button.Text = spot.ToString();
+                button.Click += SpotButton_Click;
+                spotPanel.Controls.Add(button);
             }
         }
-        private void AdminMenu_Closing(object sender, FormClosingEventArgs e)
+
+        private void ClaimSpotMenu_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            // Needed for clean exit
             if (_programmaticClose == true)
             {
-                // Reset the programmatic close and do nothing
                 _programmaticClose = false;
             }
             else if (e.CloseReason == CloseReason.UserClosing)
             {
-                // User hit the red X button
                 DBConnector.RecordLogout(accountID);
                 Application.Exit();
             }
         }
-        private void label6_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            _programmaticClose = true;
-            this.Close();
-            LogoutControl.logout(accountID);
-        }
-
-        private void listAuctButton_Click(object sender, EventArgs e)
-        {
+        private void SpotButton_Click(object sender, EventArgs e)
+        {   
+            var button = (Button)sender;
+            var index = this.anSpots.FindIndex(s => s.Equals(button.Text));
+            SpotControl.submit(accountID, anSpots[index].Time, anSpots[index].Index);
             _programmaticClose = true;
             this.Close(); 
-            SpotControl.SpotMenu(accountID); 
         }
     }
 }
