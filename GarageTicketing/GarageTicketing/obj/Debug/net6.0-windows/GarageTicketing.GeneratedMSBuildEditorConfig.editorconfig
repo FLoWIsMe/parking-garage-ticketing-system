@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GarageTicketing
-build_property.ProjectDir = C:\Users\Daelyn\Desktop\Software Engineering\Final\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\
+build_property.ProjectDir = C:\Users\Admin\Desktop\Work\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
