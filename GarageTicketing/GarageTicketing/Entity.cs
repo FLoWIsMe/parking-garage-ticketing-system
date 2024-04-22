@@ -5,7 +5,7 @@ namespace GarageTicketing.Entity
         private string _username;
         private string _passwordHash;
         private string _name;
-        private int _type;
+        private string _type;
         private int _id;
 
         private const int MaxId = int.MaxValue;
@@ -49,14 +49,14 @@ namespace GarageTicketing.Entity
             }
         }
 
-        public int Type
+        public string Type
         {
             get { return _type; }
             set
             {
-                if (value < MinId || value > MaxId)
+                if (value != "customer" || value != "admin")
                 {
-                    throw new ArgumentException($"Role: {value} is out of range ({MinId}, {MaxId})");
+                    throw new ArgumentException($"Role: {value} is not \"customer\" or \"admin\"");
                 }
                 _type = value;
             }
@@ -77,7 +77,7 @@ namespace GarageTicketing.Entity
 
         public Account() { }
 
-        public Account(string username, string password, string name, int type, int id)
+        public Account(string username, string password, string name, string type, int id)
         {
             Username = username;
             PasswordHash = password;
