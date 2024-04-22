@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GarageTicketing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f37abc42c13118c74d81a17f0c73a182cc4efd9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ef75d8e25b70ddb392f20bb9ce06cda018374c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("GarageTicketing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GarageTicketing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
