@@ -69,7 +69,7 @@ namespace GarageTicketing.Boundary
             biddingPageTitle.Name = "biddingPageTitle";
             biddingPageTitle.Size = new Size(158, 27);
             biddingPageTitle.TabIndex = 19;
-            biddingPageTitle.Text = "Create Auction";
+            biddingPageTitle.Text = "Create Spot";
             // 
             // GASimg
             // 
@@ -161,7 +161,7 @@ namespace GarageTicketing.Boundary
             createAuctButton.Name = "createAuctButton";
             createAuctButton.Size = new Size(168, 37);
             createAuctButton.TabIndex = 28;
-            createAuctButton.Text = "Create Auction";
+            createAuctButton.Text = "Create Spot";
             createAuctButton.UseVisualStyleBackColor = false;
             createAuctButton.Click += createAuctButton_Click;
             // 
@@ -219,7 +219,7 @@ namespace GarageTicketing.Boundary
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditClaimMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Create Auction Menu";
+            Text = "Create Spot Menu";
             ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
             ((System.ComponentModel.ISupportInitialize)startingPrice).EndInit();
             ResumeLayout(false);

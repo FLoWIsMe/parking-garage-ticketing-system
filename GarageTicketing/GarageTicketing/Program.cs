@@ -1,6 +1,6 @@
-using GoodsAuctionSystem.Controller;
+using GarageTicketing.Controller;
 
-namespace GoodsAuctionSystem
+namespace GarageTicketing
 {
     internal static class Program
     {

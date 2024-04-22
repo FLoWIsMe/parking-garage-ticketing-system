@@ -76,8 +76,8 @@ namespace GarageTicketing.Boundary
             }
 
 
-            Auction newAuction =
-                new Auction(
+            Spot newSpot =
+                new Spot(
                     itemNameTxt.Text,
                     descripTxt.Text,
                     condition,
@@ -85,7 +85,7 @@ namespace GarageTicketing.Boundary
                     (float)startingPrice.Value,
                     accountID
                 );
-            bool isValid = AuctionControl.submit(newAuction);
+            bool isValid = SpotControl.submit(newSpot);
             if (isValid)
             {
                 _programaticClose = true;

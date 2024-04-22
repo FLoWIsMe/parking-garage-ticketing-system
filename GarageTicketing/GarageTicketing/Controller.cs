@@ -4,305 +4,239 @@ using Microsoft.Data.Sqlite;
 
 // For hashing 
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 
 
-namespace GarageTicketing.Controller {
-
-	public class Controller {
-		public virtual void validate() { }
-		public virtual void authenticate() { }
+namespace GarageTicketing.Controller
+{
+	public class Controller
+	{
+		public virtual void Validate() { }
+		public virtual void Authenticate() { }
 	}
 	public static class OurHash
 	{
-		public static string computeHash(string aPassword)
+		public static string ComputeHash(string aPassword)
 		{
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                // Get Hash 
-                byte[] data = sha256.ComputeHash(Encoding.UTF8.GetBytes(aPassword));
-
-                var sBuilder = new StringBuilder();
-                // Format as hex
-                for (int i = 0; i < data.Length; i++)
-                {
-                    sBuilder.Append(data[i].ToString("x2"));
-                }
-                // return hex string
-                string hashedPassword = sBuilder.ToString();
-
-				return hashedPassword; 
-            }
-        }
+			using (var sha256 = SHA256.Create())
+			{
+				var data = sha256.ComputeHash(Encoding.UTF8.GetBytes(aPassword));
+				var hashedPassword = BitConverter.ToString(data).Replace("-", "");
+				return hashedPassword;
+			}
+		}
 	}
 
-	public static class DBConnector {
+	public static class DBConnector
+	{
+		private const string DataString = @"Data Source=..\..\..\GarageTicketing.db";
 
-		private const string dataString =
-			@"data source = ..\..\..\GarageTicketing.db";
-
-		public static void InitializeDB() {
+		public static void InitializeDB()
+		{
 			CreateDB();
-			populateDB();
+			PopulateDB();
 		}
 
-		static void CreateDB() {
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			// DROP ORDER MATTERS!
-			// MUST DROP TABLES THAT REFERENCE OTHER TABLES FIRST!
-			cmnd.CommandText = @"
-				CREATE TABLE ACCOUNT (
-				id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-				type TEXT NOT NULL,
-				name TEXT NOT NULL,
-				pass TEXT NOT NULL
-			);";
-			cmnd.ExecuteNonQuery();
-			cmnd.CommandText = @"
-				CREATE TABLE SPOT (
-				index INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-				time DATETIME NOT NULL,
-				FOREIGN KEY(user) REFERENCES ACCOUNT(id)
-			);";
-			cmnd.ExecuteNonQuery();
-			cmnd.CommandText = @"
-				CREATE TABLE USERLOG (
-				loginID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-				date DATETIME NOT NULL,
-				time DATETIME NOT NULL,
-				type INTEGER NOT NULL,
-				accountID INTEGER NOT NULL,
-				FOREIGN KEY(accountID) REFERENCES ACCOUNT(id)
-			);";
-			cmnd.ExecuteNonQuery();
-			conn.Close();
-		}
-
-		static void populateDB() {
-			SqliteConnection conn = new SqliteConnection(dataString);
-			conn.Open();
-			SqliteCommand cmnd = conn.CreateCommand();
-			// ACCOUNT INSERTS
-			string passHash = OurHash.computeHash("password");
-			cmnd.CommandText = $@"
-				INSERT INTO ACCOUNT (type, name, pass)
-				VALUES ('admin', 'admin', '{passHash}')";
-			cmnd.ExecuteNonQuery();
-			cmnd.CommandText = $@"
-				INSERT INTO ACCOUNT (type, name, pass)
-				VALUES ('user', 'Bob', '{passHash}')";
-			cmnd.ExecuteNonQuery();
-			cmnd.CommandText = $@"
-				INSERT INTO ACCOUNT (type, name, pass)
-				VALUES ('user', 'Billy', '{passHash}')";
-			cmnd.ExecuteNonQuery();
-			cmnd.CommandText = $@"
-				INSERT INTO ACCOUNT (type, name, pass)
-				VALUES ('user', 'Benjamin', '{passHash}')";
-			cmnd.ExecuteNonQuery();
-			// SPOT INSERTS
-			for (int i = 0; i < 8; i++) {
-			cmnd.CommandText = @"
-				INSERT INTO Spot (time, user)
-				VALUES (NULL, NULL)";
-			cmnd.ExecuteNonQuery();
+		private static void CreateDB()
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"CREATE TABLE IF NOT EXISTS Account (
+					Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+					Type TEXT NOT NULL,
+					Name TEXT NOT NULL,
+					Pass TEXT NOT NULL
+				);";
+				cmnd.ExecuteNonQuery();
+				cmnd.CommandText = @"CREATE TABLE IF NOT EXISTS Spot (
+					Index INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+					Time DATETIME NOT NULL,
+					User INTEGER NOT NULL,
+					FOREIGN KEY(User) REFERENCES Account(Id)
+				);";
+				cmnd.ExecuteNonQuery();
+				cmnd.CommandText = @"CREATE TABLE IF NOT EXISTS UserLog (
+					LoginId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+					Date DATETIME NOT NULL,
+					Time DATETIME NOT NULL,
+					Type INTEGER NOT NULL,
+					AccountId INTEGER NOT NULL,
+					FOREIGN KEY(AccountId) REFERENCES Account(Id)
+				);";
+				cmnd.ExecuteNonQuery();
 			}
-			conn.Close();
 		}
 
-		public static Account GetAccount(string username, string password) {
-			// Returns a populated account object with database information if username
-			// and password is correct. Otherwise, returns an empty Account object with an 
-			// ID of 0. It is the only Account to have this property, so checking for a
-			// false condition should always be done by checking the ID.
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			cmnd.CommandText = @"
-				SELECT type, user, pass, id
-				FROM ACCOUNT as a
-				WHERE a.user = $username
-				AND a.pass = $password;";
-			cmnd.Parameters.AddWithValue("$username", username);
-			cmnd.Parameters.AddWithValue("$password", password);
-			cmnd.ExecuteNonQuery();
-			SqliteDataReader dataReader = cmnd.ExecuteReader();
-
-			string AccType = "";
-			string AccName = "";
-			string AccPass = "";
-			int AccId = 0;
-
-			while (dataReader.Read()) {
-				AccType = dataReader.GetString(0);
-				AccName = dataReader.GetString(1);
-				AccPass = dataReader.GetString(2);
-				AccId = dataReader.GetInt32(3);
+		private static void PopulateDB()
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				var passwordHash = OurHash.ComputeHash("password");
+				cmnd.CommandText = @"INSERT INTO Account (Type, Name, Pass) VALUES (@type, @name, @pass)";
+				cmnd.Parameters.AddWithValue("@type", "admin");
+				cmnd.Parameters.AddWithValue("@name", "admin");
+				cmnd.Parameters.AddWithValue("@pass", passwordHash);
+				cmnd.ExecuteNonQuery();
 			}
-			conn.Close();
-			Account account = new Account(
-				AccType,
-				AccName,
-				AccPass,
-				AccId
-			);
-			return account;
 		}
 
-
-		public static Spot GetSpot(int index) {
-			// Returns an Spot with an associated Account object
-			// when given an index
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			cmnd.CommandText = @"
-				SELECT time, user, index, 
-				FROM SPOT as a
-				WHERE a.index = $index;";
-			cmnd.Parameters.AddWithValue("$index", index);
-			cmnd.ExecuteNonQuery();
-			SqliteDataReader dataReader = cmnd.ExecuteReader();
-
-			int SpotTime = 0;
-			int SpotUser = 0;
-			int SpotIndex = 0;
-
-			while (dataReader.Read()) {
-				SpotTime = dataReader.GetInt32(0);
-				SpotUser = dataReader.GetInt32(1);
-				SpotIndex = dataReader.GetInt32(2);
+		public static Account GetAccount(string username, string password)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"SELECT Type, User, Pass, Id FROM Account WHERE User = @username AND Pass = @password";
+				cmnd.Parameters.AddWithValue("@username", username);
+				cmnd.Parameters.AddWithValue("@password", OurHash.ComputeHash(password));
+				using (var reader = cmnd.ExecuteReader())
+				{
+					if (reader.Read())
+					{
+						var account = new Account(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
+						return account;
+					}
+				}
 			}
-			conn.Close();
-			Spot spot = new Spot(
-				SpotTime,
-				SpotUser,
-				SpotIndex
-            );
-			return spot;
+
+			return new Account("", "", "", 0);
 		}
 
-		public static void SaveLogin(int AccountID) {
-			// Saves when the user is logged in to the UserLog table
-			// Login is 0
-			saveLoginOrLogout(0, AccountID);
-		}
-
-		public static List<Spot> ListSpots() {
-			// Returns a random list of 6 Spots.
-			// Will return fewer if there are not 6 available
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			cmnd.CommandText = @"
-				SELECT time, user, index
-				FROM SPOT";
-			cmnd.ExecuteNonQuery();
-			SqliteDataReader dataReader = cmnd.ExecuteReader();
-			List<Spot> SpotList = new List<Spot>();
-			int SpotTime;
-			int SpotUser;
-			int SpotIndex;
-
-			while (dataReader.Read()) {
-				SpotTime = dataReader.GetInt32(0);
-				SpotUser = dataReader.GetInt32(1);
-				SpotIndex = dataReader.GetInt32(2);
-				Spot spot = new Spot(
-					SpotTime,
-					SpotUser,
-					SpotIndex,
-                );
-				SpotList.Add(spot);
+		public static Spot GetSpot(int index)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"SELECT Time, User, Index FROM Spot WHERE Index = @index";
+				cmnd.Parameters.AddWithValue("@index", index);
+				using (var reader = cmnd.ExecuteReader())
+				{
+					if (reader.Read())
+					{
+						var spot = new Spot(reader.GetDateTime(0), reader.GetInt32(1), reader.GetInt32(2));
+						return spot;
+					}
+				}
 			}
-			conn.Close();
-			return SpotList;
+
+			return null;
 		}
 
-		public static void UpdateSpot(int index, int time, int user) {
-			// Update an Spot
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			cmnd.CommandText = @"
-				UPDATE SPOT
-				SET time = $time, user = $user
-				WHERE index = $index;";
-			cmnd.Parameters.AddWithValue("$time", time);
-			cmnd.Parameters.AddWithValue("$user", user);
-			cmnd.Parameters.AddWithValue("$index", index);
-			cmnd.ExecuteNonQuery();
+		public static List<Spot> GetSpots()
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"SELECT Time, User, Index FROM Spot";
+				using (var reader = cmnd.ExecuteReader())
+				{
+					var spots = new List<Spot>();
+					while (reader.Read())
+					{
+						var spot = new Spot(reader.GetDateTime(0), reader.GetInt32(1), reader.GetInt32(2));
+						spots.Add(spot);
+					}
+					return spots;
+				}
+			}
 		}
 
-		public static void RecordLogout(int accountID) {
-			// Saves when the user is logged out to the UserLog table
-			// Logout is 1
-			saveLoginOrLogout(1, accountID);
+		public static Spot SaveSpot(int index, DateTime time, int user)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"INSERT OR REPLACE INTO Spot (Time, User, Index) VALUES (@time, @user, @index)";
+				cmnd.Parameters.AddWithValue("@time", time);
+				cmnd.Parameters.AddWithValue("@user", user);
+				cmnd.Parameters.AddWithValue("@index", index);
+				cmnd.ExecuteNonQuery();
+
+				return GetSpot(index);
+			}
 		}
 
-		private static void saveLoginOrLogout(int type, int accountID) {
-			DateTime dateOnly = DateTime.Today;
-			DateTime timeOnly = DateTime.Now;
-			var conn = new SqliteConnection(dataString);
-			conn.Open();
-			var cmnd = conn.CreateCommand();
-			cmnd.CommandText = @"
-				INSERT INTO USERLOG (date, time, type, accountID)
-				VALUES ($date, $time, $type, $accountID)";
-			cmnd.Parameters.AddWithValue("$date", dateOnly);
-			cmnd.Parameters.AddWithValue("$time", timeOnly);
-			cmnd.Parameters.AddWithValue("$type", type);
-			cmnd.Parameters.AddWithValue("$accountID", accountID);
-			cmnd.ExecuteNonQuery();
+		public static void SaveLogin(int accountID)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"INSERT INTO UserLog (Date, Time, Type, AccountId) VALUES (@date, @time, 0, @accountId)";
+				cmnd.Parameters.AddWithValue("@date", DateTime.Today);
+				cmnd.Parameters.AddWithValue("@time", DateTime.Now);
+				cmnd.Parameters.AddWithValue("@accountId", accountID);
+				cmnd.ExecuteNonQuery();
+			}
+		}
+
+		public static void RecordLogout(int accountID)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"INSERT INTO UserLog (Date, Time, Type, AccountId) VALUES (@date, @time, 1, @accountId)";
+				cmnd.Parameters.AddWithValue("@date", DateTime.Today);
+				cmnd.Parameters.AddWithValue("@time", DateTime.Now);
+				cmnd.Parameters.AddWithValue("@accountId", accountID);
+				cmnd.ExecuteNonQuery();
+			}
 		}
 	}
 
 	public class SpotControl : Controller
 	{
-		public static CreateSpotMenu CreateMenu { get; set; }
+		public static ClaimSpotMenu CreateMenu { get; set; }
 		public static void SpotMenu(int accountID)
 		{
-			CreateMenu = new CreateSpotMenu(accountID);
-			CreateMenu.Show(); 
+			CreateMenu = new ClaimSpotMenu(accountID);
+			CreateMenu.Show();
 		}
 
-		public static bool submit(Spot anSpot)
+		public static bool submit(int userID, DateTime time, int index)
 		{
 			// Determine if our Spot is valid
-			bool isValid = validate(anSpot);
+			bool isValid = validate(userID, time, index);
 
 			// If so, Follow Figure 2.13 CreateSpot Success
 			if (isValid)
 			{
 				// Add it to the database 
-				DBConnector.AddSpot(anSpot);
+				DBConnector.SaveSpot(index, time, userID);
 
 				// Get a new set of Spots and open the Spoteer menu
-				List<Spot> newList = DBConnector.ListSpot();
+				List<Spot> newList = DBConnector.GetSpots();
 
 				SpoteerMenu SpotMenu = new SpoteerMenu(anSpot.owner);
 				SpotMenu.formatSpots(newList);
-				
+
 				SpotMenu.Show();
 
 				// Return so the CreateSpotMenu will close
 				return true;
 			}
-			// Otherwise follow Figure 2.14 Createspottioin Invalid
+			// Otherwise follow Figure 2.14 CreateAuctioin Invalid
 			else return false;
 		}
 
-		public static bool validate(Spot anSpot)
+		public static bool validate(int userID, DateTime time, int index)
 		{
 			// Do some error checking and input validation
-			if (anSpot.name == "" || anSpot.name == " ")
+			if (userID < 0 || index < 0)
 			{
 				return false;
 			}
 
-			if (anSpot.description.Length > 200 || anSpot.description == "" || anSpot.description == " ")
+			if (time < DateTime.Now)
 			{
 				return false;
 			}
@@ -313,7 +247,7 @@ namespace GarageTicketing.Controller {
 		}
 	}
 
-	public class BidController : Controller
+	public class ClaimControl : Controller
 	{
 		public static void select(int SpotID, int accountID)
 		{
@@ -321,19 +255,19 @@ namespace GarageTicketing.Controller {
 			// Get the Spot from the database
 			Spot anSpot = DBConnector.GetSpot(SpotID);
 
-			// Add our code
-			PlaceBidMenu aPlaceBidmenu = new PlaceBidMenu(anSpot, accountID);
-			aPlaceBidmenu.Show();
+			// Create the EditClaimMenu and display it
+			EditClaimMenu aEditClaimMenu = new EditClaimMenu(accountID);
+			aEditClaimMenu.Show();
 		}
-		public static void submit(int accountID, int  SpotID, float newHighestBid)
+		public static void submit(int index, DateTime time, int accountID)
 		{
-            DBConnector.UpdateSpot(accountID, SpotID, newHighestBid);
+			DBConnector.SaveSpot(index, time, accountID);
 
-            List<Spot> newList = DBConnector.ListSpot();
+			List<Spot> newList = DBConnector.GetSpots();
 
-            BidderMenu aBidderMenu = new BidderMenu(accountID, newList);
-			aBidderMenu.Show();
-        }
+			aAdminMenu = new AdminMenu(newList, accountID);
+			aAdminMenu.Show();
+		}
 	}
 
 	public class StartController : Controller
@@ -345,8 +279,8 @@ namespace GarageTicketing.Controller {
 
 			LoginForm myLogin = new LoginForm();
 
-            Application.Run(myLogin);
-        }
+			Application.Run(myLogin);
+		}
 	}
 
 	public class LoginControl : Controller
@@ -354,35 +288,35 @@ namespace GarageTicketing.Controller {
 		public static bool login(string username, string password)
 		{
 			// Following figure 2.10 and 2.11
-			bool isValid = validateInput(username, password); 
+			bool isValid = validateInput(username, password);
 
 			// Make sure we have valid input
-			if (isValid) 
+			if (isValid)
 			{
 				// Hash the password given
-				string hashedPassword = OurHash.computeHash(password);
+				string hashedPassword = OurHash.ComputeHash(password);
 				Account anAccount = DBConnector.GetAccount(username, hashedPassword);
 
 				// Check their password
 				bool isAuth = Authenticate(anAccount);
-				
-				if (isAuth) 
+
+				if (isAuth)
 				{
 					// Figure 2.10
 					DBConnector.SaveLogin(anAccount.Id);
-					List<Spot> myList = DBConnector.ListSpots();
-					
+					List<Spot> myList = DBConnector.GetSpots();
+
 					// 0 is Spoteer
-					if (anAccount.role == 0)
+					if (anAccount.Type == "admin")
 					{
-                        SpoteerMenu myMenu = new SpoteerMenu(anAccount.accountNumber);
-						myMenu.formatSpots(myList);
+						AdminMenu myMenu = new AdminMenu(anAccount.Id);
+						myMenu.FormatSpots(myList);
 						myMenu.Show();
-						return true; 
+						return true;
 					}
-					else if (anAccount.role == 1)
+					else if (anAccount.Type == "customer")
 					{
-						BidderMenu myMenu = new BidderMenu(anAccount.accountNumber, myList);
+						CustomerMenu myMenu = new CustomerMenu(anAccount.Id, myList);
 						myMenu.Show();
 						return true;
 					}
@@ -409,23 +343,23 @@ namespace GarageTicketing.Controller {
 
 			if (username == "" || password == "")
 			{
-				return false; 
+				return false;
 			}
-			return true; 
+			return true;
 		}
 		public static bool Authenticate(Account anAccount)
 		{
 			// The database queires for username and password.
 			// Returns account with ID of 0 if username or password is wrong. 
-			if (anAccount.accountNumber == 0) 
+			if (anAccount.Id == 0)
 				return false;
 			else
 				return true;
-        }
-    }
+		}
+	}
 
 	public class LogoutControl : Controller
-	{ 
+	{
 		public static void logout(int accountID)
 		{
 			// Following Figure 2.15 
@@ -435,6 +369,5 @@ namespace GarageTicketing.Controller {
 			LoginForm.Show();
 		}
 	}
-
-
 }
+

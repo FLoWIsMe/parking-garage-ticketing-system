@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
         "projectName": "GarageTicketing",
-        "projectPath": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
-        "packagesPath": "C:\\Users\\Daelyn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daelyn\\Desktop\\Software Engineering\\Final\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\GarageTicketing.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Work\\csci-4711-parking-garage-ticketing-system\\GarageTicketing\\GarageTicketing\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Daelyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +59,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.29, 6.0.29]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -69,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

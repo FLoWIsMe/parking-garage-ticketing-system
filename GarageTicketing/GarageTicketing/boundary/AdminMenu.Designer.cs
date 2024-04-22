@@ -121,7 +121,7 @@ namespace GarageTicketing.Boundary
             label1.Name = "label1";
             label1.Size = new Size(228, 36);
             label1.TabIndex = 22;
-            label1.Text = "Current Auctions";
+            label1.Text = "Current Spots";
             // 
             // logoutButton
             // 
@@ -145,7 +145,7 @@ namespace GarageTicketing.Boundary
             listAuctButton.Name = "listAuctButton";
             listAuctButton.Size = new Size(155, 75);
             listAuctButton.TabIndex = 24;
-            listAuctButton.Text = "List Auction";
+            listAuctButton.Text = "List Spot";
             listAuctButton.UseVisualStyleBackColor = false;
             listAuctButton.Click += listAuctButton_Click;
             // 
