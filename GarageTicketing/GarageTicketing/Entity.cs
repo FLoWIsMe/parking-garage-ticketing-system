@@ -9,6 +9,18 @@ namespace GarageTicketing.Entity
 
         public Account(string username, string passwordHash, string type, int id)
         {
+            if (string.IsNullOrWhiteSpace(username))
+                throw new ArgumentException("Username cannot be null or whitespace.", nameof(username));
+
+            if (string.IsNullOrWhiteSpace(passwordHash))
+                throw new ArgumentException("PasswordHash cannot be null or whitespace.", nameof(passwordHash));
+
+            if (string.IsNullOrWhiteSpace(type))
+                throw new ArgumentException("Type cannot be null or whitespace.", nameof(type));
+
+            if (id < 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id cannot be negative.");
+
             Username = username;
             PasswordHash = passwordHash;
             Type = type;
@@ -24,20 +36,28 @@ namespace GarageTicketing.Entity
 
         public Spot(DateTime time, int user, int index)
         {
+            if (user < 0)
+                throw new ArgumentOutOfRangeException(nameof(user), "User cannot be negative.");
+
+            if (index < 0)
+                throw new ArgumentOutOfRangeException(nameof(index), "Index cannot be negative.");
+
             Time = time;
             User = user;
             Index = index;
         }
     }
+
     public class Spots
     {
         public Spot[] SpotsArray { get; set; }
 
         public Spots(Spot[] spotsArray)
         {
+            if (spotsArray == null || spotsArray.Length == 0)
+                throw new ArgumentException("SpotsArray cannot be null or empty.", nameof(spotsArray));
+
             SpotsArray = spotsArray;
         }
     }
 }
-
-
