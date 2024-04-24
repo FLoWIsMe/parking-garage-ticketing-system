@@ -417,7 +417,7 @@ namespace GarageTicketing.Controller
 					}
 					else if (anAccount.Type == "customer")
 					{
-						CustomerMenu myMenu = new CustomerMenu(anAccount.Id, myList);
+						ClaimSpotMenu myMenu = new ClaimSpotMenu(anAccount.Id, myList);
 						myMenu.Show();
 						return true;
 					}
@@ -582,8 +582,10 @@ namespace GarageTicketing.Controller
 		public static bool Authenticate(Account anAccount)
 		{
 			// The database queires for username and password.
-			// Returns account with ID of 0 if username or password is wrong. 
-			if (anAccount.Id == 0)
+			// Returns null or account with ID of 0. 
+			if (anAccount == null)
+				return false;
+			else if (anAccount.Id == 0)
 				return false;
 			else
 				return true;
