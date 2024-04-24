@@ -303,34 +303,34 @@ namespace GarageTicketing.Controller
 						UserLogService.SaveLogin(anAccount.Id);
 						List<Spot> myList = DBConnector.GetSpots();
 
-						// 0 is Spoteer
-						if (anAccount.Type == "admin")
-						{
-							AdminMenu myMenu = new AdminMenu(myList, anAccount.Id);
-							myMenu.Show();
-							return true;
-						}
-						else if (anAccount.Type == "customer")
-						{
-							CustomerMenu myMenu = new CustomerMenu(anAccount.Id, myList);
-							myMenu.Show();
-							return true;
-						}
-						else
-						{
-							return false; // Final case for Roles
-						}
+					// 0 is Spoteer
+					if (anAccount.Type == "admin")
+					{
+						AdminMenu myMenu = new AdminMenu(myList, anAccount.Id);
+						myMenu.Show();
+						return true;
+					}
+					else if (anAccount.Type == "customer")
+					{
+						ClaimSpotMenu myMenu = new ClaimSpotMenu(anAccount.Id, myList);
+						myMenu.Show();
+						return true;
 					}
 					else
 					{
-						return false; // Final case for Auth 
+						return false; // Final case for Roles
 					}
 				}
 				else
 				{
-					return false; // Final case for Valid
+					return false; // Final case for Auth 
 				}
 			}
+			else
+			{
+				return false; // Final case for Valid
+			}
+		}
 
 
 			public class UserLogService
@@ -468,22 +468,22 @@ namespace GarageTicketing.Controller
 				// Do some input vallidation... Database with paramaterized queires 
 				// takes care of most of this 
 
-				if (username == "" || password == "")
-				{
-					return false;
-				}
-				return true;
-			}
-			public static bool Authenticate(Account anAccount)
+			if (username == "" || password == "")
 			{
-				// The database queires for username and password.
-				// Returns account with ID of 0 if username or password is wrong. 
-				if (anAccount.Id == 0)
-					return false;
-				else
-					return true;
+				return false;
 			}
+			return true;
 		}
+		public static bool Authenticate(Account anAccount)
+		{
+			// The database queires for username and password.
+			// Returns account with ID of 0 if username or password is wrong. 
+			if (anAccount.Id == 0)
+				return false;
+			else
+				return true;
+		}
+	}
 
 		public class LogoutControl : Controller
 		{
