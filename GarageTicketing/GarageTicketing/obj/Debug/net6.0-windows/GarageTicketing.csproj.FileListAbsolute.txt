@@ -75,3 +75,17 @@ C:\Users\Admin\Desktop\Work\csci-4711-parking-garage-ticketing-system\GarageTick
 C:\Users\Admin\Desktop\Work\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.dll
 C:\Users\Admin\Desktop\Work\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\refint\GarageTicketing.dll
 C:\Users\Admin\Desktop\Work\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.pdb
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.csproj.AssemblyReference.cache
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.Boundary.AdminMenu.resources
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.Boundary.ClaimSpotMenu.resources
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.Boundary.CustomerMenu.resources
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.Boundary.EditClaimMenu.resources
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.Boundary.LoginForm.resources
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.csproj.GenerateResource.cache
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.AssemblyInfoInputs.cache
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.AssemblyInfo.cs
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.csproj.CoreCompileInputs.cache
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.dll
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\refint\GarageTicketing.dll
+C:\Users\erkin\Source\Repos\csci-4711-parking-garage-ticketing-system\GarageTicketing\GarageTicketing\obj\Debug\net6.0-windows\GarageTicketing.pdb

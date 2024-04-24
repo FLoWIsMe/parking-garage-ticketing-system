@@ -15,7 +15,7 @@ namespace GarageTicketing.Boundary
 {
     public partial class LoginForm : Form
     {
-        bool _programmaticClose; 
+        bool _programmaticClose;
         public LoginForm()
         {
             InitializeComponent();
