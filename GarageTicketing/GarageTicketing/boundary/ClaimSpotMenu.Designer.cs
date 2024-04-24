@@ -1,5 +1,4 @@
-﻿
-namespace GarageTicketing.Boundary
+﻿namespace GarageTicketing.Boundary
 {
     partial class ClaimSpotMenu
     {
@@ -29,270 +28,189 @@ namespace GarageTicketing.Boundary
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClaimSpotMenu));
-            label2 = new Label();
-            biddingPageTitle = new Label();
-            GASimg = new PictureBox();
-            label1 = new Label();
-            label3 = new Label();
-            panel1 = new Panel();
-            dollar2LOL = new Label();
-            descripLabel = new Label();
-            condNewUsedLabel = new Label();
-            highBidValLabel = new Label();
-            conditionLabel = new Label();
-            highestBidLabel = new Label();
-            itemNameLabel = new Label();
-            panel2 = new Panel();
-            ClaimSpotButton = new Button();
-            numericUpDown1 = new NumericUpDown();
-            dollarLOL = new Label();
-            bidNowLabel = new Label();
-            ((System.ComponentModel.ISupportInitialize)GASimg).BeginInit();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            loginButt = new Button();
+            logo = new Label();
+            button8 = new Button();
+            button7 = new Button();
+            button6 = new Button();
+            button5 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
-            // label2
+            // loginButt
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label2.BackColor = SystemColors.ControlLight;
-            label2.BorderStyle = BorderStyle.Fixed3D;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(-11, 103);
-            label2.Name = "label2";
-            label2.Size = new Size(1000, 10);
-            label2.TabIndex = 15;
+            loginButt.Anchor = AnchorStyles.None;
+            loginButt.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            loginButt.BackColor = SystemColors.MenuBar;
+            loginButt.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            loginButt.Location = new Point(12, 11);
+            loginButt.Margin = new Padding(3, 2, 3, 2);
+            loginButt.Name = "loginButt";
+            loginButt.Size = new Size(130, 50);
+            loginButt.TabIndex = 10;
+            loginButt.Text = "Logout";
+            loginButt.UseVisualStyleBackColor = false;
             // 
-            // biddingPageTitle
+            // logo
             // 
-            biddingPageTitle.Anchor = AnchorStyles.Top;
-            biddingPageTitle.AutoSize = true;
-            biddingPageTitle.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            biddingPageTitle.Location = new Point(419, 42);
-            biddingPageTitle.Name = "biddingPageTitle";
-            biddingPageTitle.Size = new Size(140, 27);
-            biddingPageTitle.TabIndex = 14;
-            biddingPageTitle.Text = "Bidding Page";
-            biddingPageTitle.Click += logo_Click;
+            logo.Anchor = AnchorStyles.Top;
+            logo.AutoSize = true;
+            logo.Font = new Font("Times New Roman", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            logo.Location = new Point(311, 19);
+            logo.Name = "logo";
+            logo.Size = new Size(185, 31);
+            logo.TabIndex = 11;
+            logo.Text = "Pick Your Spot ";
+            logo.Click += logo_Click;
             // 
-            // GASimg
+            // button8
             // 
-            GASimg.Image = (Image)resources.GetObject("GASimg.Image");
-            GASimg.Location = new Point(-26, -2);
-            GASimg.Margin = new Padding(3, 2, 3, 2);
-            GASimg.Name = "GASimg";
-            GASimg.Size = new Size(233, 109);
-            GASimg.SizeMode = PictureBoxSizeMode.Zoom;
-            GASimg.TabIndex = 13;
-            GASimg.TabStop = false;
+            button8.Anchor = AnchorStyles.None;
+            button8.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button8.BackColor = SystemColors.MenuBar;
+            button8.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button8.Location = new Point(440, 321);
+            button8.Margin = new Padding(3, 2, 3, 2);
+            button8.Name = "button8";
+            button8.Size = new Size(130, 50);
+            button8.TabIndex = 26;
+            button8.Text = "8";
+            button8.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // button7
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(310, 412);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 25);
-            label1.TabIndex = 16;
+            button7.Anchor = AnchorStyles.None;
+            button7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button7.BackColor = SystemColors.MenuBar;
+            button7.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button7.Location = new Point(231, 321);
+            button7.Margin = new Padding(3, 2, 3, 2);
+            button7.Name = "button7";
+            button7.Size = new Size(130, 50);
+            button7.TabIndex = 25;
+            button7.Text = "7";
+            button7.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // button6
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label3.Location = new Point(-11, 109);
-            label3.Name = "label3";
-            label3.Size = new Size(1000, 16);
-            label3.TabIndex = 17;
+            button6.Anchor = AnchorStyles.None;
+            button6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button6.BackColor = SystemColors.MenuBar;
+            button6.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button6.Location = new Point(440, 237);
+            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Name = "button6";
+            button6.Size = new Size(130, 50);
+            button6.TabIndex = 24;
+            button6.Text = "6";
+            button6.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // button5
             // 
-            panel1.AutoSize = true;
-            panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(dollar2LOL);
-            panel1.Controls.Add(descripLabel);
-            panel1.Controls.Add(condNewUsedLabel);
-            panel1.Controls.Add(highBidValLabel);
-            panel1.Controls.Add(conditionLabel);
-            panel1.Controls.Add(highestBidLabel);
-            panel1.Controls.Add(itemNameLabel);
-            panel1.Location = new Point(25, 128);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(564, 440);
-            panel1.TabIndex = 18;
+            button5.Anchor = AnchorStyles.None;
+            button5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button5.BackColor = SystemColors.MenuBar;
+            button5.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button5.Location = new Point(231, 237);
+            button5.Margin = new Padding(3, 2, 3, 2);
+            button5.Name = "button5";
+            button5.Size = new Size(130, 50);
+            button5.TabIndex = 23;
+            button5.Text = "5";
+            button5.UseVisualStyleBackColor = false;
             // 
-            // dollar2LOL
+            // button4
             // 
-            dollar2LOL.AutoSize = true;
-            dollar2LOL.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dollar2LOL.Location = new Point(167, 108);
-            dollar2LOL.Name = "dollar2LOL";
-            dollar2LOL.Size = new Size(24, 27);
-            dollar2LOL.TabIndex = 6;
-            dollar2LOL.Text = "$";
+            button4.Anchor = AnchorStyles.None;
+            button4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button4.BackColor = SystemColors.MenuBar;
+            button4.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.Location = new Point(440, 162);
+            button4.Margin = new Padding(3, 2, 3, 2);
+            button4.Name = "button4";
+            button4.Size = new Size(130, 50);
+            button4.TabIndex = 22;
+            button4.Text = "4";
+            button4.UseVisualStyleBackColor = false;
             // 
-            // descripLabel
+            // button3
             // 
-            descripLabel.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            descripLabel.Location = new Point(20, 235);
-            descripLabel.Name = "descripLabel";
-            descripLabel.Size = new Size(525, 179);
-            descripLabel.TabIndex = 5;
-            descripLabel.Text = "This is a place holder for a description";
+            button3.Anchor = AnchorStyles.None;
+            button3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button3.BackColor = SystemColors.MenuBar;
+            button3.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(231, 162);
+            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(130, 50);
+            button3.TabIndex = 21;
+            button3.Text = "3";
+            button3.UseVisualStyleBackColor = false;
             // 
-            // condNewUsedLabel
+            // button2
             // 
-            condNewUsedLabel.AutoSize = true;
-            condNewUsedLabel.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            condNewUsedLabel.Location = new Point(148, 175);
-            condNewUsedLabel.Name = "condNewUsedLabel";
-            condNewUsedLabel.Size = new Size(103, 27);
-            condNewUsedLabel.TabIndex = 4;
-            condNewUsedLabel.Text = "new/used";
+            button2.Anchor = AnchorStyles.None;
+            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button2.BackColor = SystemColors.MenuBar;
+            button2.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(440, 79);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(130, 50);
+            button2.TabIndex = 20;
+            button2.Text = "2";
+            button2.UseVisualStyleBackColor = false;
             // 
-            // highBidValLabel
+            // button1
             // 
-            highBidValLabel.AutoSize = true;
-            highBidValLabel.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            highBidValLabel.Location = new Point(186, 108);
-            highBidValLabel.Name = "highBidValLabel";
-            highBidValLabel.Size = new Size(78, 27);
-            highBidValLabel.TabIndex = 3;
-            highBidValLabel.Text = "xxx.xx";
-            // 
-            // conditionLabel
-            // 
-            conditionLabel.AutoSize = true;
-            conditionLabel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            conditionLabel.Location = new Point(20, 174);
-            conditionLabel.Name = "conditionLabel";
-            conditionLabel.Size = new Size(122, 26);
-            conditionLabel.TabIndex = 2;
-            conditionLabel.Text = "Condition:";
-            // 
-            // highestBidLabel
-            // 
-            highestBidLabel.AutoSize = true;
-            highestBidLabel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            highestBidLabel.Location = new Point(20, 108);
-            highestBidLabel.Name = "highestBidLabel";
-            highestBidLabel.Size = new Size(141, 26);
-            highestBidLabel.TabIndex = 1;
-            highestBidLabel.Text = "Highest Bid:";
-            // 
-            // itemNameLabel
-            // 
-            itemNameLabel.AutoSize = true;
-            itemNameLabel.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            itemNameLabel.Location = new Point(224, 12);
-            itemNameLabel.Name = "itemNameLabel";
-            itemNameLabel.Size = new Size(142, 32);
-            itemNameLabel.TabIndex = 0;
-            itemNameLabel.Text = "Item Name";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ControlLightLight;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(ClaimSpotButton);
-            panel2.Controls.Add(numericUpDown1);
-            panel2.Controls.Add(dollarLOL);
-            panel2.Controls.Add(bidNowLabel);
-            panel2.Location = new Point(661, 270);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(287, 150);
-            panel2.TabIndex = 19;
-            // 
-            // ClaimSpotButton
-            // 
-            ClaimSpotButton.BackColor = SystemColors.Control;
-            ClaimSpotButton.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ClaimSpotButton.Location = new Point(153, 72);
-            ClaimSpotButton.Name = "ClaimSpotButton";
-            ClaimSpotButton.Size = new Size(112, 34);
-            ClaimSpotButton.TabIndex = 6;
-            ClaimSpotButton.Text = "ClaimSpot";
-            ClaimSpotButton.UseVisualStyleBackColor = false;
-            ClaimSpotButton.Click += ClaimSpotButton_Click;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(51, 75);
-            numericUpDown1.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(82, 31);
-            numericUpDown1.TabIndex = 5;
-            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // dollarLOL
-            // 
-            dollarLOL.AutoSize = true;
-            dollarLOL.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dollarLOL.Location = new Point(33, 76);
-            dollarLOL.Name = "dollarLOL";
-            dollarLOL.Size = new Size(24, 27);
-            dollarLOL.TabIndex = 4;
-            dollarLOL.Text = "$";
-            // 
-            // bidNowLabel
-            // 
-            bidNowLabel.AutoSize = true;
-            bidNowLabel.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            bidNowLabel.Location = new Point(33, 46);
-            bidNowLabel.Name = "bidNowLabel";
-            bidNowLabel.Size = new Size(100, 26);
-            bidNowLabel.TabIndex = 3;
-            bidNowLabel.Text = "Bid Now";
+            button1.Anchor = AnchorStyles.None;
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.BackColor = SystemColors.MenuBar;
+            button1.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(231, 79);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 50);
+            button1.TabIndex = 19;
+            button1.Text = "1";
+            button1.UseVisualStyleBackColor = false;
             // 
             // ClaimSpotMenu
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(978, 594);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            Controls.Add(label3);
-            Controls.Add(label1);
-            Controls.Add(label2);
-            Controls.Add(biddingPageTitle);
-            Controls.Add(GASimg);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(800, 450);
+            Controls.Add(button8);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(logo);
+            Controls.Add(loginButt);
             Name = "ClaimSpotMenu";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Place Bid Menu";
-            ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            Text = "Garage Ticketing";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label biddingPageTitle;
-        private System.Windows.Forms.PictureBox GASimg;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label descripLabel;
-        private System.Windows.Forms.Label condNewUsedLabel;
-        private System.Windows.Forms.Label highBidValLabel;
-        private System.Windows.Forms.Label conditionLabel;
-        private System.Windows.Forms.Label highestBidLabel;
-        private System.Windows.Forms.Label itemNameLabel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button ClaimSpotButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label dollarLOL;
-        private System.Windows.Forms.Label bidNowLabel;
-        private System.Windows.Forms.Label dollar2LOL;
+        private Button loginButt;
+        private Label logo;
+        private Button button8;
+        private Button button7;
+        private Button button6;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
     }
 }

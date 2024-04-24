@@ -280,6 +280,111 @@ namespace GarageTicketing.Controller
 			}
 		}
 
+		public static void RecordLogout(int accountID)
+		{
+			using (var conn = new SqliteConnection(DataString))
+			using (var cmnd = conn.CreateCommand())
+			{
+				conn.Open();
+				cmnd.CommandText = @"INSERT INTO UserLog (Date, Time, Type, AccountId) VALUES (@date, @time, 1, @accountId)";
+				cmnd.Parameters.AddWithValue("@date", DateTime.Today);
+				cmnd.Parameters.AddWithValue("@time", DateTime.Now);
+				cmnd.Parameters.AddWithValue("@accountId", accountID);
+				cmnd.ExecuteNonQuery();
+			}
+		}
+	}
+
+	public class SpotControl : Controller
+	{
+		public static ClaimSpotMenu CreateMenu { get; set; }
+		public static void SpotMenu(int accountID)
+		{
+			CreateMenu = new ClaimSpotMenu(accountID);
+			CreateMenu.Show();
+		}
+
+		public static bool submit(int userID, DateTime time, int index)
+		{
+			// Determine if our Spot is valid
+			bool isValid = validate(userID, time, index);
+
+			// If so, Follow Figure 2.13 CreateSpot Success
+			if (isValid)
+			{
+				// Add it to the database 
+				DBConnector.SaveSpot(index, time, userID);
+
+				// Get a new set of Spots and open the Spoteer menu
+				List<Spot> newList = DBConnector.GetSpots();
+
+				SpotMenu spotMenu = new SpotMenu(anSpot.owner);
+				spotMenu.formatSpots(newList);
+
+				spotMenu.Show();
+
+				// Return so the CreateSpotMenu will close
+				return true;
+			}
+			// Otherwise follow Figure 2.14 CreateAuctioin Invalid
+			else return false;
+		}
+
+		public static bool validate(int userID, DateTime time, int index)
+		{
+			// Do some error checking and input validation
+			if (userID < 0 || index < 0)
+			{
+				return false;
+			}
+
+			if (time < DateTime.Now)
+			{
+				return false;
+			}
+
+			return true;
+			// We are using paramertized SQL so we don't need to do
+			// a bunch of crazy regex stuff here... 
+		}
+	}
+
+	public class ClaimControl : Controller
+	{
+		public static void select(int SpotID, int accountID)
+		{
+			// Following Figure 2.12:
+			// Get the Spot from the database
+			Spot anSpot = DBConnector.GetSpot(SpotID);
+
+			// Create the EditClaimMenu and display it
+			EditClaimMenu aEditClaimMenu = new EditClaimMenu(accountID);
+			aEditClaimMenu.Show();
+		}
+		public static void submit(int index, DateTime time, int accountID)
+		{
+			DBConnector.SaveSpot(index, time, accountID);
+
+			List<Spot> newList = DBConnector.GetSpots();
+
+			aAdminMenu = new AdminMenu(newList, accountID);
+			aAdminMenu.Show();
+		}
+	}
+
+	public class StartController : Controller
+	{
+		public static void Initialize()
+		{
+			// Following Figure 2.9: startup
+			DBConnector.InitializeDB();
+
+			LoginForm myLogin = new LoginForm();
+
+			Application.Run(myLogin);
+		}
+	}
+
 	public class LoginControl : Controller
 	{
 		public static bool login(string username, string password)

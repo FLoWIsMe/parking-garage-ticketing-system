@@ -19,8 +19,6 @@ namespace GarageTicketing.Boundary
             InitializeComponent();
             accountID = anAccountID;
             this.FormClosing += EditClaimMenu_FormClosing;
-            conditionDrop.Text = "New";
-            startingPrice.Maximum = 1000000;
         }
 
         private void EditClaimMenu_FormClosing(object? sender, FormClosingEventArgs e)
@@ -60,41 +58,52 @@ namespace GarageTicketing.Boundary
 
         private void createAuctButton_Click(object sender, EventArgs e)
         {
-            string text = conditionDrop.Text;
-            bool condition;
-            if (text == "New")
-            {
-                condition = true;
-            }
-            else if (text == "Used")
-            {
-                condition = false;
-            }
-            else
-            {
-                condition = false;
-            }
+            
+        }
 
+        private void logo_Click(object sender, EventArgs e)
+        {
 
-            Spot newSpot =
-                new Spot(
-                    itemNameTxt.Text,
-                    descripTxt.Text,
-                    condition,
-                    1,
-                    (float)startingPrice.Value,
-                    accountID
-                );
-            bool isValid = SpotControl.submit(newSpot);
-            if (isValid)
-            {
-                _programaticClose = true;
-                this.Close();
-            }
-            else
-            {
-                // Label here for error 
-            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
