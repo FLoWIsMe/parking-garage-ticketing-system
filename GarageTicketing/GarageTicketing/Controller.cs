@@ -396,11 +396,7 @@ namespace GarageTicketing.Controller
 	public class SpotControl : Controller
 	{
 		public static ClaimSpotMenu CreateMenu { get; set; }
-		public static void SpotMenu(int accountID)
-		{
-			CreateMenu = new ClaimSpotMenu(accountID);
-			CreateMenu.Show();
-		}
+
 
 		public static bool submit(int userID, DateTime time, int index)
 		{
@@ -414,11 +410,9 @@ namespace GarageTicketing.Controller
 				DBConnector.SaveSpot(index, time, userID);
 
 				// Get a new set of Spots and open the Spoteer menu
-				List<Spot> newList = DBConnector.GetSpots();
+				List<Spot> spots = DBConnector.GetSpots();
 
-				SpotMenu spotMenu = new SpotMenu(anSpot.owner);
-				spotMenu.formatSpots(newList);
-
+				ClaimSpotMenu spotMenu = new ClaimSpotMenu(spots);
 				spotMenu.Show();
 
 				// Return so the CreateSpotMenu will close
