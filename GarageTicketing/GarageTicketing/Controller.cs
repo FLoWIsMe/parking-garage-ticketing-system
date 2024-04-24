@@ -395,9 +395,6 @@ namespace GarageTicketing.Controller
 
 	public class SpotControl : Controller
 	{
-		public static ClaimSpotMenu CreateMenu { get; set; }
-
-
 		public static bool submit(int userID, DateTime time, int index)
 		{
 			// Determine if our Spot is valid
