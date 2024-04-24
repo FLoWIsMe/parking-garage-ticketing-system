@@ -279,29 +279,68 @@ namespace GarageTicketing.Controller
 				throw; // Rethrow the exception after logging it if you want calling code to handle it
 			}
 		}
-
-		public class LoginControl : Controller
+		public class UserLogService
 		{
-			public static bool login(string username, string password)
+			// This private method abstracts the common insert logic
+			private static void InsertUserLog(int accountID, int type)
 			{
-				// Following figure 2.10 and 2.11
-				bool isValid = validateInput(username, password);
-
-				// Make sure we have valid input
-				if (isValid)
+				try
 				{
-					// Hash the password given
-					string hashedPassword = OurHash.ComputeHash(password);
-					Account anAccount = DBConnector.GetAccount(username, hashedPassword);
+					using var conn = new SqliteConnection(DataString);
+					conn.Open();
 
-					// Check their password
-					bool isAuth = Authenticate(anAccount);
+					using var cmnd = conn.CreateCommand();
+					cmnd.CommandText = @"INSERT INTO UserLog (Date, Time, Type, AccountId) VALUES (@date, @time, @type, @accountId)";
 
-					if (isAuth)
-					{
-						// Figure 2.10
-						UserLogService.SaveLogin(anAccount.Id);
-						List<Spot> myList = DBConnector.GetSpots();
+					cmnd.Parameters.AddWithValue("@date", DateTime.Today);
+					cmnd.Parameters.AddWithValue("@time", DateTime.Now);
+					cmnd.Parameters.AddWithValue("@type", type);
+					cmnd.Parameters.AddWithValue("@accountId", accountID);
+
+					cmnd.ExecuteNonQuery();
+				}
+				catch (SqliteException ex)
+				{
+					// Log the exception details
+					// Example: Log.Error(ex, "Error recording user log with account ID {accountID}", accountID);
+					throw; // Rethrow the exception after logging it
+				}
+			}
+
+			public static void SaveLogin(int accountID)
+			{
+				InsertUserLog(accountID, 0); // Type 0 for login
+			}
+
+			public static void RecordLogout(int accountID)
+			{
+				InsertUserLog(accountID, 1); // Type 1 for logout
+			}
+		}
+	}
+
+	public class LoginControl : Controller
+	{
+		public static bool login(string username, string password)
+		{
+			// Following figure 2.10 and 2.11
+			bool isValid = validateInput(username, password);
+
+			// Make sure we have valid input
+			if (isValid)
+			{
+				// Hash the password given
+				string hashedPassword = OurHash.ComputeHash(password);
+				Account anAccount = DBConnector.GetAccount(username, hashedPassword);
+
+				// Check their password
+				bool isAuth = Authenticate(anAccount);
+
+				if (isAuth)
+				{
+					// Figure 2.10
+					DBConnector.UserLogService.SaveLogin(anAccount.Id);
+					List<Spot> myList = DBConnector.GetSpots();
 
 					// 0 is Spoteer
 					if (anAccount.Type == "admin")
@@ -331,142 +370,10 @@ namespace GarageTicketing.Controller
 				return false; // Final case for Valid
 			}
 		}
-
-
-			public class UserLogService
-			{
-				// This private method abstracts the common insert logic
-				private static void InsertUserLog(int accountID, int type)
-				{
-					try
-					{
-						using var conn = new SqliteConnection(DataString);
-						conn.Open();
-
-						using var cmnd = conn.CreateCommand();
-						cmnd.CommandText = @"INSERT INTO UserLog (Date, Time, Type, AccountId) VALUES (@date, @time, @type, @accountId)";
-
-						cmnd.Parameters.AddWithValue("@date", DateTime.Today);
-						cmnd.Parameters.AddWithValue("@time", DateTime.Now);
-						cmnd.Parameters.AddWithValue("@type", type);
-						cmnd.Parameters.AddWithValue("@accountId", accountID);
-
-						cmnd.ExecuteNonQuery();
-					}
-					catch (SqliteException ex)
-					{
-						// Log the exception details
-						// Example: Log.Error(ex, "Error recording user log with account ID {accountID}", accountID);
-						throw; // Rethrow the exception after logging it
-					}
-				}
-
-				public static void SaveLogin(int accountID)
-				{
-					InsertUserLog(accountID, 0); // Type 0 for login
-				}
-
-				public static void RecordLogout(int accountID)
-				{
-					InsertUserLog(accountID, 1); // Type 1 for logout
-				}
-			}
-
-
-			public class SpotControl : Controller
-			{
-				public static ClaimSpotMenu CreateMenu { get; set; }
-				public static void SpotMenu(int accountID)
-				{
-					CreateMenu = new ClaimSpotMenu(accountID);
-					CreateMenu.Show();
-				}
-
-				public static bool submit(int userID, DateTime time, int index)
-				{
-					// Determine if our Spot is valid
-					bool isValid = validate(userID, time, index);
-
-					// If so, Follow Figure 2.13 CreateSpot Success
-					if (isValid)
-					{
-						// Add it to the database 
-						DBConnector.SaveSpot(index, time, userID);
-
-						// Get a new set of Spots and open the Spoteer menu
-						List<Spot> newList = DBConnector.GetSpots();
-
-						SpotMenu spotMenu = new SpotMenu(anSpot.owner);
-						spotMenu.formatSpots(newList);
-
-						spotMenu.Show();
-
-						// Return so the CreateSpotMenu will close
-						return true;
-					}
-					// Otherwise follow Figure 2.14 CreateAuctioin Invalid
-					else return false;
-				}
-
-				public static bool validate(int userID, DateTime time, int index)
-				{
-					// Do some error checking and input validation
-					if (userID < 0 || index < 0)
-					{
-						return false;
-					}
-
-					if (time < DateTime.Now)
-					{
-						return false;
-					}
-
-					return true;
-					// We are using paramertized SQL so we don't need to do
-					// a bunch of crazy regex stuff here... 
-				}
-			}
-
-			public class ClaimControl : Controller
-			{
-				public static void select(int SpotID, int accountID)
-				{
-					// Following Figure 2.12:
-					// Get the Spot from the database
-					Spot anSpot = DBConnector.GetSpot(SpotID);
-
-					// Create the EditClaimMenu and display it
-					EditClaimMenu aEditClaimMenu = new EditClaimMenu(accountID);
-					aEditClaimMenu.Show();
-				}
-				public static void submit(int index, DateTime time, int accountID)
-				{
-					DBConnector.SaveSpot(index, time, accountID);
-
-					List<Spot> newList = DBConnector.GetSpots();
-
-					AdminMenu aAdminMenu = new AdminMenu(newList, accountID);
-					aAdminMenu.Show();
-				}
-			}
-
-			public class StartController : Controller
-			{
-				public static void Initialize()
-				{
-					// Following Figure 2.9: startup
-					DBConnector.InitializeDB();
-
-					LoginForm myLogin = new LoginForm();
-
-					Application.Run(myLogin);
-				}
-			}
-
-			public static bool validateInput(string username, string password)
-			{
-				// Do some input vallidation... Database with paramaterized queires 
-				// takes care of most of this 
+		public static bool validateInput(string username, string password)
+		{
+			// Do some input vallidation... Database with paramaterized queires 
+			// takes care of most of this 
 
 			if (username == "" || password == "")
 			{
@@ -477,24 +384,114 @@ namespace GarageTicketing.Controller
 		public static bool Authenticate(Account anAccount)
 		{
 			// The database queires for username and password.
-			// Returns account with ID of 0 if username or password is wrong. 
-			if (anAccount.Id == 0)
+			// Returns null username or password is wrong. 
+			if (anAccount == null)
 				return false;
 			else
 				return true;
 		}
 	}
 
-		public class LogoutControl : Controller
-		{
-			public static void logout(int accountID)
-			{
-				// Following Figure 2.15 
-				DBConnector.RecordLogout(accountID);
 
-				LoginForm LoginForm = new LoginForm();
-				LoginForm.Show();
+	public class SpotControl : Controller
+	{
+		public static ClaimSpotMenu CreateMenu { get; set; }
+		public static void SpotMenu(int accountID)
+		{
+			CreateMenu = new ClaimSpotMenu(accountID);
+			CreateMenu.Show();
+		}
+
+		public static bool submit(int userID, DateTime time, int index)
+		{
+			// Determine if our Spot is valid
+			bool isValid = validate(userID, time, index);
+
+			// If so, Follow Figure 2.13 CreateSpot Success
+			if (isValid)
+			{
+				// Add it to the database 
+				DBConnector.SaveSpot(index, time, userID);
+
+				// Get a new set of Spots and open the Spoteer menu
+				List<Spot> newList = DBConnector.GetSpots();
+
+				SpotMenu spotMenu = new SpotMenu(anSpot.owner);
+				spotMenu.formatSpots(newList);
+
+				spotMenu.Show();
+
+				// Return so the CreateSpotMenu will close
+				return true;
 			}
+			// Otherwise follow Figure 2.14 CreateAuctioin Invalid
+			else return false;
+		}
+
+		public static bool validate(int userID, DateTime time, int index)
+		{
+			// Do some error checking and input validation
+			if (userID < 0 || index < 0)
+			{
+				return false;
+			}
+
+			if (time < DateTime.Now)
+			{
+				return false;
+			}
+
+			return true;
+			// We are using paramertized SQL so we don't need to do
+			// a bunch of crazy regex stuff here... 
+		}
+	}
+
+	public class ClaimControl : Controller
+	{
+		public static void select(int SpotID, int accountID)
+		{
+			// Following Figure 2.12:
+			// Get the Spot from the database
+			Spot anSpot = DBConnector.GetSpot(SpotID);
+
+			// Create the EditClaimMenu and display it
+			EditClaimMenu aEditClaimMenu = new EditClaimMenu(accountID);
+			aEditClaimMenu.Show();
+		}
+		public static void submit(int index, DateTime time, int accountID)
+		{
+			DBConnector.SaveSpot(index, time, accountID);
+
+			List<Spot> newList = DBConnector.GetSpots();
+
+			AdminMenu aAdminMenu = new AdminMenu(newList, accountID);
+			aAdminMenu.Show();
+		}
+	}
+
+	public class StartController : Controller
+	{
+		public static void Initialize()
+		{
+			// Following Figure 2.9: startup
+			DBConnector.InitializeDB();
+
+			LoginForm myLogin = new LoginForm();
+
+			Application.Run(myLogin);
+		}
+	}
+
+	public class LogoutControl : Controller
+	{
+		public static void logout(int accountID)
+		{
+			// Following Figure 2.15 
+			DBConnector.UserLogService.RecordLogout(accountID);
+
+			LoginForm LoginForm = new LoginForm();
+			LoginForm.Show();
 		}
 	}
 }
