@@ -30,8 +30,6 @@ namespace GarageTicketing.Boundary
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            GASimg = new PictureBox();
             logo = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             userLable = new Label();
@@ -41,7 +39,6 @@ namespace GarageTicketing.Boundary
             loginButt = new Button();
             label2 = new Label();
             loginError = new Label();
-            ((System.ComponentModel.ISupportInitialize)GASimg).BeginInit();
             SuspendLayout();
             // 
             // logo
@@ -49,9 +46,9 @@ namespace GarageTicketing.Boundary
             logo.Anchor = AnchorStyles.Top;
             logo.AutoSize = true;
             logo.Font = new Font("Times New Roman", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            logo.Location = new Point(232, 40);
+            logo.Location = new Point(190, 24);
             logo.Name = "logo";
-            logo.Size = new Size(309, 36);
+            logo.Size = new Size(371, 31);
             logo.TabIndex = 1;
             logo.Text = "Parking Garage Ticketing System";
             // 
@@ -68,7 +65,7 @@ namespace GarageTicketing.Boundary
             userLable.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
             userLable.Location = new Point(89, 158);
             userLable.Name = "userLable";
-            userLable.Size = new Size(132, 33);
+            userLable.Size = new Size(114, 27);
             userLable.TabIndex = 4;
             userLable.Text = "Username:";
             // 
@@ -79,7 +76,7 @@ namespace GarageTicketing.Boundary
             userText.Margin = new Padding(3, 2, 3, 2);
             userText.MaxLength = 30;
             userText.Name = "userText";
-            userText.Size = new Size(344, 28);
+            userText.Size = new Size(344, 25);
             userText.TabIndex = 5;
             userText.TextChanged += userText_TextChanged;
             // 
@@ -91,7 +88,7 @@ namespace GarageTicketing.Boundary
             passText.MaxLength = 50;
             passText.Name = "passText";
             passText.PasswordChar = '*';
-            passText.Size = new Size(344, 28);
+            passText.Size = new Size(344, 25);
             passText.TabIndex = 7;
             passText.TextChanged += passText_TextChanged;
             // 
@@ -102,7 +99,7 @@ namespace GarageTicketing.Boundary
             passLable.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
             passLable.Location = new Point(89, 247);
             passLable.Name = "passLable";
-            passLable.Size = new Size(129, 33);
+            passLable.Size = new Size(110, 27);
             passLable.TabIndex = 6;
             passLable.Text = "Password:";
             // 
@@ -139,14 +136,14 @@ namespace GarageTicketing.Boundary
             loginError.ForeColor = Color.Red;
             loginError.Location = new Point(121, 316);
             loginError.Name = "loginError";
-            loginError.Size = new Size(535, 33);
+            loginError.Size = new Size(317, 27);
             loginError.TabIndex = 9;
             loginError.Text = "Username or password is wrong";
             loginError.Click += loginError_Click;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 20F);
+            AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(778, 494);
@@ -158,29 +155,25 @@ namespace GarageTicketing.Boundary
             Controls.Add(userLable);
             Controls.Add(label2);
             Controls.Add(logo);
-            Controls.Add(GASimg);
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(680, 443);
             Name = "LoginForm";
             Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)GASimg).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox GASimg;
-        private System.Windows.Forms.Label logo;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label userLable;
-        private System.Windows.Forms.TextBox userText;
-        private System.Windows.Forms.TextBox passText;
-        private System.Windows.Forms.Label passLable;
-        private System.Windows.Forms.Button loginButt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label loginError;
+        private Label logo;
+        private ContextMenuStrip contextMenuStrip1;
+        private Label userLable;
+        private TextBox userText;
+        private TextBox passText;
+        private Label passLable;
+        private Button loginButt;
+        private Label label2;
+        private Label loginError;
     }
 }
 

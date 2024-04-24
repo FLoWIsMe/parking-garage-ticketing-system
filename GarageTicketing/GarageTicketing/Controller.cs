@@ -216,10 +216,10 @@ namespace GarageTicketing.Controller
 				// Get a new set of Spots and open the Spoteer menu
 				List<Spot> newList = DBConnector.GetSpots();
 
-				SpoteerMenu SpotMenu = new SpoteerMenu(anSpot.owner);
-				SpotMenu.formatSpots(newList);
+				SpotMenu spotMenu = new SpotMenu(anSpot.owner);
+				spotMenu.formatSpots(newList);
 
-				SpotMenu.Show();
+				spotMenu.Show();
 
 				// Return so the CreateSpotMenu will close
 				return true;
