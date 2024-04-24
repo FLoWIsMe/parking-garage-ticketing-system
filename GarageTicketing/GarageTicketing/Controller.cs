@@ -332,6 +332,26 @@ namespace GarageTicketing.Controller
 				return false; // Final case for Valid
 			}
 		}
+		public static bool validateInput(string username, string password)
+		{
+			// Do some input vallidation... Database with paramaterized queires 
+			// takes care of most of this 
+
+			if (username == "" || password == "")
+			{
+				return false;
+			}
+			return true;
+		}
+		public static bool Authenticate(Account anAccount)
+		{
+			// The database queires for username and password.
+			// Returns account with ID of 0 if username or password is wrong. 
+			if (anAccount.Id == 0)
+				return false;
+			else
+				return true;
+		}
 	}
 
 
@@ -465,26 +485,6 @@ namespace GarageTicketing.Controller
 		}
 	}
 
-	public static bool validateInput(string username, string password)
-	{
-		// Do some input vallidation... Database with paramaterized queires 
-		// takes care of most of this 
-
-		if (username == "" || password == "")
-		{
-			return false;
-		}
-		return true;
-	}
-	public static bool Authenticate(Account anAccount)
-	{
-		// The database queires for username and password.
-		// Returns account with ID of 0 if username or password is wrong. 
-		if (anAccount.Id == 0)
-			return false;
-		else
-			return true;
-	}
 
 	public class LogoutControl : Controller
 	{
