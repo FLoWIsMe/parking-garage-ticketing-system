@@ -8,7 +8,8 @@ namespace GarageTicketing
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            StartController.Initialize(); 
+            StartController.Initialize();
+
         }
     }
 }

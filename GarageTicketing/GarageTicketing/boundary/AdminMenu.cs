@@ -19,7 +19,15 @@ namespace GarageTicketing.Boundary
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (_programmaticClose == true)
+            {
+                _programmaticClose = false;
+            }
+            else if (e.CloseReason == CloseReason.UserClosing)
+            {
+                UserLogService.RecordLogout(accountID);
+                Application.Exit();
+            }
         }
 
         private void loginButt_Click(object sender, EventArgs e)
