@@ -324,7 +324,7 @@ namespace GarageTicketing.Controller
 		public static bool login(string username, string password)
 		{
 			// Following figure 2.10 and 2.11
-			bool isValid = validateInput(username, password);
+			bool isValid = Validate(username, password);
 
 			// Make sure we have valid input
 			if (isValid)
@@ -370,15 +370,30 @@ namespace GarageTicketing.Controller
 				return false; // Final case for Valid
 			}
 		}
-		public static bool validateInput(string username, string password)
+		public static bool Validate(string username, string password)
 		{
-			// Do some input vallidation... Database with paramaterized queires 
-			// takes care of most of this 
-
-			if (username == "" || password == "")
-			{
+			// Basic input validation
+			if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
 				return false;
+
+			// Examples of patterns to look for that may indicate SQL injection attempts
+			// This is NOT a replacement for parameterized queries and proper security practices
+			string[] sqlInjectionPatterns = new string[]
+			{
+				"--", ";--", ";", "/*", "*/", "@@", 
+				"@", "char", "nchar", "varchar", "nvarchar",
+				"alter", "begin", "cast", "create", "cursor",
+				"declare", "delete", "drop", "end", "exec",
+				"execute", "fetch", "insert", "kill", "select",
+				"sys", "sysobjects", "syscolumns", "table", "update"
+			};
+
+			foreach (var pattern in sqlInjectionPatterns)
+			{
+				if (username.Contains(pattern) || password.Contains(pattern))
+					return false;
 			}
+
 			return true;
 		}
 		public static bool Authenticate(Account anAccount)
@@ -387,8 +402,7 @@ namespace GarageTicketing.Controller
 			// Returns null username or password is wrong. 
 			if (anAccount == null)
 				return false;
-			else
-				return true;
+			return true;
 		}
 	}
 
