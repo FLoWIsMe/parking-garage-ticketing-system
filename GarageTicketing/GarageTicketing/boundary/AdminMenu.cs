@@ -42,7 +42,7 @@ namespace GarageTicketing.Boundary
             }
             else if (e.CloseReason == CloseReason.UserClosing)
             {
-                DBConnector.RecordLogout(accountID);
+                UserLogService.RecordLogout(accountID);
                 Application.Exit();
             }
         }
